@@ -8,7 +8,7 @@ export default defineConfig({
   integrations: [
     starlight({
       title: 'Learn Dataspaces',
-      description: 'Guided paths for understanding, integrating, and building sovereign data sharing systems.',
+      description: 'Guided paths for understanding, operating, and building sovereign data sharing systems.',
       sidebar: [
         {
           label: 'A Dataspace Use Case',
@@ -30,7 +30,30 @@ export default defineConfig({
           ],
         },
         {
-          label: 'Integrate a Participant',
+          label: 'Set Up a Dataspace Platform',
+          collapsed: true,
+          items: [
+            { label: 'Overview', slug: 'platform-setup' },
+            { label: 'Platform Operating Models', slug: 'platform-setup/platform-operating-models' },
+            { label: 'Component Map', slug: 'platform-setup/component-map' },
+            { label: 'What Eclipse Provides vs. What You Build', slug: 'platform-setup/responsibility-split' },
+            { label: 'Infrastructure Prerequisites', slug: 'platform-setup/prerequisites' },
+            { label: 'Deploy EDC Services', slug: 'platform-setup/edc-services' },
+            { label: 'Deploy Connector Fabric Manager', slug: 'platform-setup/connector-fabric-manager' },
+            { label: 'Deploy Activity Agents', slug: 'platform-setup/activity-agents' },
+            { label: 'Identity Provider Setup', slug: 'platform-setup/identity-provider-setup' },
+            { label: 'Dataspace Profiles and Cells', slug: 'platform-setup/dataspace-profiles-and-cells' },
+            { label: 'Provision Participants', slug: 'platform-setup/provisioning-participants' },
+            { label: 'Customer Handoff', slug: 'platform-setup/customer-handoff' },
+            { label: 'Self-Hosted Connector Track', slug: 'platform-setup/self-hosted-connector-track' },
+            { label: 'Add Portal and Observability', slug: 'platform-setup/portal-and-observability' },
+            { label: 'Add Data Plane Capabilities', slug: 'platform-setup/data-plane-capabilities' },
+            { label: 'Optional Platform Services', slug: 'platform-setup/optional-platform-services' },
+            { label: 'From Baseline to Offering', slug: 'platform-setup/baseline-to-offering' },
+          ],
+        },
+        {
+          label: 'Build a Dataspace Application',
           collapsed: true,
           items: [
             { label: 'Overview', slug: 'system-integration' },
@@ -40,33 +63,6 @@ export default defineConfig({
             { label: 'The Identity Hub', slug: 'system-integration/identity-hub' },
             { label: 'Data Plane Architecture', slug: 'system-integration/data-plane-architecture' },
             { label: 'Deploying a Data Plane', slug: 'system-integration/deploying-a-data-plane' },
-          ],
-        },
-        {
-          label: 'Set Up a Dataspace Platform',
-          collapsed: true,
-          items: [
-            { label: 'Overview', slug: 'platform-setup' },
-            { label: 'Infrastructure Prerequisites', slug: 'platform-setup/prerequisites' },
-            { label: 'EDC Services', slug: 'platform-setup/edc-services' },
-            { label: 'Connector Fabric Manager', slug: 'platform-setup/connector-fabric-manager' },
-            { label: 'Activity Agents', slug: 'platform-setup/activity-agents' },
-            { label: 'Identity Provider Setup', slug: 'platform-setup/identity-provider-setup' },
-            { label: 'Onboarding Design', slug: 'platform-setup/onboarding-design' },
-            { label: 'Provisioning Participants', slug: 'platform-setup/provisioning-participants' },
-            { label: 'Customer Handoff', slug: 'platform-setup/customer-handoff' },
-          ],
-        },
-        {
-          label: 'Build a Dataspace Offering',
-          collapsed: true,
-          items: [
-            { label: 'Overview', slug: 'build-guide' },
-            { label: 'The Component Map', slug: 'build-guide/components' },
-            { label: 'The CSP Baseline', slug: 'build-guide/baseline' },
-            { label: 'Portal and Observability', slug: 'build-guide/portal' },
-            { label: 'Customer Applications', slug: 'build-guide/customer-apps' },
-            { label: 'Multiple Data Planes and Credential Issuance', slug: 'build-guide/full-build-out' },
           ],
         },
       ],

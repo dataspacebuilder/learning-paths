@@ -1,13 +1,12 @@
 # Learn Dataspaces
 
-Guided learning paths for understanding, integrating, and building sovereign data sharing systems.
+Guided learning paths for understanding, operating, and building sovereign data sharing systems.
 
-This repository contains the source for a static documentation site focused on practical dataspace onboarding. The current content is organized into four paths:
+This repository contains the source for a static documentation site focused on practical dataspace onboarding. The current visible content is organized into three learning paths:
 
 - **A Dataspace Use Case** — a story-first introduction using an offshore wind product-information sharing use case.
-- **Integrate a Participant** — guidance for publishing data, consuming data, using management APIs, identity, and data planes.
-- **Set Up a Dataspace Platform** — guidance for managed dataspace services, provisioning, identity, and customer handoff.
-- **Build a Dataspace Offering** — guidance on what Eclipse components provide and what a provider builds or operates.
+- **Set Up a Dataspace Platform** — guidance for deploying and operating managed, self-hosted, and hybrid dataspace platform capabilities.
+- **Build a Dataspace Application** — guidance for publishing data, consuming data, using management APIs, identity, and data planes.
 
 ## Content
 

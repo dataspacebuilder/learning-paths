@@ -1,66 +1,84 @@
 ---
 title: "Set Up a Dataspace Platform"
-description: "Platform path for deploying managed dataspace services and provisioning participants."
+description: "Operator path for deploying, provisioning, handing over, and evolving dataspace infrastructure."
 ---
 
-## Who This Is For
+This learning path is for the team that operates the platform behind a dataspace.
 
-You are a developer at a cloud service provider and your job is to set up an Eclipse
-Dataspace Components as-a-Service (EDCaaS) offering. You need to deploy a set of
-components, provision dataspace participants for your customers, and hand them the
-endpoints they need to operate.
+In the offshore wind story, companies such as GreenSteel, TowerWorks, SafeLoad, NorthSea Wind, and GridSight need connectors, identities, credentials, policies, and data-transfer capabilities. They should not each have to invent the platform layer from scratch. A platform operator can provide that foundation as a managed service, as a self-hosted reference stack, or as a hybrid model where some pieces stay close to the participant's systems.
 
-You do not need to understand what a dataspace is in detail. You need to know what to
-deploy, how to provision participants, and what to give your customers.
+## Who this path is for
 
-## What You Are Building
+This path is for:
 
-Your EDCaaS platform lets companies participate in dataspaces without running their own
-control plane or identity infrastructure. You host the shared components. Your customers
-get API endpoints to manage their assets, policies, and contracts.
+- cloud service providers building a managed dataspace platform;
+- platform operators running connector and identity services for participants;
+- DevOps, SRE, and infrastructure teams deploying dataspace components;
+- enterprise IT teams that self-host participant infrastructure;
+- architects deciding what belongs in the platform and what belongs in applications or governance.
 
-```
-┌─────────────────────────────────────────────────────┐
-│  Your EDCaaS Platform                               │
-│  ┌────────────────────────────────────────────┐     │
-│  │  EDC Virtual Connector                     │     │
-│  │  Control Plane · Identity Hub              │     │
-│  └────────────────────────────────────────────┘     │
-│                                                     │
-│  ┌────────────────────────────────────────────┐     │
-│  │  Connector Fabric Manager (CFM)            │     │
-│  │  Tenant Mgr · Provision Mgr · Agents       │     │
-│  └────────────────────────────────────────────┘     │
-│                                                     │
-│  ┌────────────────────────────────────────────┐     │
-│  │  Infrastructure                            │     │
-│  │  PostgreSQL · IDP · Secret Store · NATS    │     │
-│  └────────────────────────────────────────────┘     │
-└──────────────────────┬──────────────────────────────┘
-                       │
-              Data Plane Signaling
-                       │
-              ┌────────┴────────┐
-              │  Customer       │
-              │  Data Plane     │
-              └─────────────────┘
+You should already understand the high-level dataspace model. If you are new to dataspaces, start with [A Dataspace Use Case](../use-case/). You do not need deep Eclipse Dataspace Components internals before starting this path.
+
+## What you will set up
+
+A platform gives participants a reliable operating environment for dataspace interactions:
+
+```text
+Dataspace participants and applications
+        │
+        ▼
+Management APIs · Identity APIs · DSP endpoints
+        │
+        ▼
+Control Plane · Identity Hub · Data Plane capabilities
+        │
+        ▼
+Connector Fabric Manager · provisioning agents
+        │
+        ▼
+Kubernetes · PostgreSQL · secret store · NATS · IDP · observability
 ```
 
-The data plane runs outside the core stack. It can be hosted on the customer's own
-infrastructure or offered as a separate service by the CSP. Either way, it connects
-to the Control Plane via the Data Plane Signaling protocol. This separation is
-intentional — data routing stays independent of the control plane. Data planes are
-typically set up by system integrators (see the [System Integration](../system-integration/) learning path).
+The exact deployment model can vary. A managed CSP platform may operate most services centrally. A self-hosted participant may run its own connector stack. A hybrid model may use managed identity and control-plane services while keeping data planes close to sensitive operational systems.
+
+## What you will learn
+
+By the end of this path, you will be able to:
+
+- choose between managed, self-hosted, and hybrid operating models;
+- identify the platform components and their responsibilities;
+- explain what Eclipse provides and what an operator must build, configure, or run;
+- prepare the infrastructure prerequisites for a baseline deployment;
+- deploy EDC Control Plane and Identity Hub services in a multi-tenant platform model;
+- deploy Connector Fabric Manager and the activity agents that provision participants;
+- configure IDP roles, scopes, claims, and participant-context isolation;
+- understand cells, dataspace profiles, and participant profiles;
+- provision participants and track asynchronous onboarding state;
+- hand over the correct endpoints, credentials, and identifiers to participants;
+- decide how data planes, portals, observability, issuer services, and federated catalogs fit into the offering;
+- evolve a baseline API-only platform into a mature dataspace service.
 
 ## Chapters
 
-| # | Chapter | What you'll learn |
-|---|---------|-------------------|
-| 1 | [Prerequisites](./prerequisites/) | Infrastructure you need before deploying |
-| 2 | [EDC Services](./edc-services/) | Control Plane and Identity Hub in virtual mode |
-| 3 | [Connector Fabric Manager](./connector-fabric-manager/) | Tenant Manager and Provision Manager |
-| 4 | [Activity Agents](./activity-agents/) | The workers that execute provisioning |
-| 5 | [Identity Provider Setup](./identity-provider-setup/) | JWT claims, roles, and access control |
-| 6 | [Onboarding Design](./onboarding-design/) | Legal vs. technical onboarding, Issuer Service options |
-| 7 | [Provisioning Participants](./provisioning-participants/) | Creating tenants and deploying participant profiles |
-| 8 | [Customer Handoff](./customer-handoff/) | What you give your customer to operate |
+| # | Chapter | What you will learn |
+|---|---|---|
+| 1 | [Platform Operating Models](./platform-operating-models/) | Managed, self-hosted, and hybrid ways to operate dataspace infrastructure. |
+| 2 | [Component Map](./component-map/) | The major platform components and how they fit together. |
+| 3 | [What Eclipse Provides vs. What You Build](./responsibility-split/) | The responsibility split between Eclipse projects, operators, customers, and dataspace authorities. |
+| 4 | [Infrastructure Prerequisites](./prerequisites/) | The cluster, databases, identity provider, messaging, secrets, networking, and operations foundations you need. |
+| 5 | [Deploy EDC Services](./edc-services/) | Control Plane and Identity Hub deployment, endpoints, persistence, and participant isolation. |
+| 6 | [Deploy Connector Fabric Manager](./connector-fabric-manager/) | Tenant Manager, Provision Manager, orchestration, and bootstrap configuration. |
+| 7 | [Deploy Activity Agents](./activity-agents/) | IDP, EDC, registration, and onboarding agents. |
+| 8 | [Identity Provider Setup](./identity-provider-setup/) | JWT claims, roles, scopes, clients, and context isolation. |
+| 9 | [Dataspace Profiles and Cells](./dataspace-profiles-and-cells/) | How platform zones and dataspace-specific configuration are modeled. |
+| 10 | [Provision Participants](./provisioning-participants/) | Tenant creation, participant profile deployment, DID setup, and credential bootstrapping. |
+| 11 | [Customer Handoff](./customer-handoff/) | What a participant or integrator receives after provisioning. |
+| 12 | [Self-Hosted Connector Track](./self-hosted-connector-track/) | How the model changes when a participant operates its own stack. |
+| 13 | [Add Portal and Observability](./portal-and-observability/) | Customer UX, platform status, logs, metrics, health checks, and alerts. |
+| 14 | [Add Data Plane Capabilities](./data-plane-capabilities/) | Managed data planes, customer-operated data planes, capability selection, and app-as-data-plane patterns. |
+| 15 | [Optional Platform Services](./optional-platform-services/) | Issuer Service, federated catalog, onboarding frontends, and other optional services. |
+| 16 | [From Baseline to Offering](./baseline-to-offering/) | A maturity model for growing from a baseline deployment into a complete service. |
+
+## What this path does not cover
+
+This path is not a production hardening checklist, a complete Kubernetes runbook, or a full application-development tutorial. It explains the operator view and the platform shape. Application behavior belongs in [Build a Dataspace Application](../system-integration/). Detailed governance, legal onboarding rules, and credential schema design belong in a dedicated trust and profile design track.

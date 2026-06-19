@@ -14,6 +14,6 @@ To access data from another participant, the flow follows the Dataspace Protocol
 
 If your customer needs to serve data (not just consume), they need a data plane.
 The data plane is the component that actually handles data transfer — it runs
-outside the EDCaaS platform, under your customer's control (or as a separate
-CSP service). See [Data Plane Architecture](./data-plane-architecture/) and
+outside the managed platform, under your customer's control (or as a separate
+platform service). See [Data Plane Architecture](./data-plane-architecture/) and
 [Deploying a Data Plane](./deploying-a-data-plane/).

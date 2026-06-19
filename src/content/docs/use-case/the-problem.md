@@ -1,22 +1,71 @@
 ---
 title: "Chapter 1: The Problem"
+description: "Why ordinary document sharing breaks down when many companies need controlled access to changing product information."
 ---
 
-Every manufactured product carries a trail of documents. A battery housing needs a material certificate from its alloy supplier. The component maker creates assembly specs and quality records. An independent lab issues a test report. The car maker at the end needs all of it for regulatory compliance.
+LumenDrive Motors is preparing a new electric vehicle model for market. Before the vehicle can be approved, sold, serviced, and reported on, LumenDrive needs evidence from the companies upstream in its supply chain.
 
-Today, most of this travels by email. PDFs get attached, forwarded, renamed, and filed into folders that quickly become outdated. When a supplier updates a certificate, they email it again — to a different list. Some recipients get the update; others keep using last year's version.
+The battery housing uses a specific alloy. That alloy has a material certificate. The housing itself has component documentation. An independent lab has issued a test report. Later, analytics partners may need selected facts from the same document chain to monitor risk and compliance.
 
-Larger companies build portals. But every customer has a different portal. A mid-size supplier with forty customers manages forty logins and forty upload processes. Some companies invest in direct API integrations. These work until one side changes their API. Then someone spends weeks fixing it.
+The request sounds simple: send us the product information we need.
 
-The pattern:
+In practice, that request turns into a coordination problem.
 
-- Every new partner means a new integration
-- Each relationship has its own format and access model
-- No way to verify authenticity at scale
-- Documents expire and get replaced — nobody downstream finds out until something breaks
+## The usual ways do not scale
 
-### What would have to change
+The first answer is email. A supplier attaches a PDF, someone forwards it, someone else stores a copy, and the document starts living in several inboxes and shared folders. That works until the certificate changes, the recipient list is incomplete, or nobody can prove which copy is current.
 
-The problem isn't the documents themselves. It's how they move between companies. A solution would need to replace one-to-one connections with a shared protocol — a common way to publish, discover, negotiate access, and transfer data that works the same regardless of who the partner is.
+The second answer is a portal. A larger customer asks every supplier to upload documents into its own system. That helps the customer, but it pushes complexity onto suppliers. A mid-size supplier can end up with dozens of customer portals, each with its own login, template, naming convention, and upload process.
 
-That's what a dataspace provides. The rest of this guide shows how.
+The third answer is a direct API integration. This can be powerful when two companies have a stable, high-volume relationship. But every new partner means another project: authentication, data mapping, access rules, monitoring, maintenance, and change management. When one side changes its API, the integration breaks until both sides coordinate a fix.
+
+All three approaches share the same weakness: every relationship becomes its own special case.
+
+## The trust problem is just as important as the data problem
+
+The documents are not all public. A material certificate may be available to qualified customers. A test report may be available only to active consortium members. A component specification may be restricted to manufacturers using the component in an approved product line.
+
+So the question is not only:
+
+> Where is the file?
+
+It is also:
+
+> Who is asking, what are they allowed to do, and what proof do they have?
+
+If every supplier answers those questions differently, the ecosystem becomes hard to govern. One supplier relies on email history. Another uses portal accounts. A third asks for a purchase-order number. A fourth requires a certificate. None of those choices is wrong in isolation, but together they create a patchwork of trust rules.
+
+## Updates make the patchwork worse
+
+Product information changes.
+
+A supplier updates a material certificate after improving the recycled content of an alloy. A test lab corrects a report. A component maker releases a new version of an assembly specification. A consortium suspends a participant's membership. A policy changes because a document becomes more sensitive.
+
+With email, old copies remain in circulation. With portals, every portal needs its own update. With direct integrations, each integration needs to handle change events in a compatible way.
+
+The result is a familiar pattern:
+
+- each new partner creates a new connection;
+- each connection has its own access model;
+- each document exists in too many uncontrolled copies;
+- each update relies on manual coordination;
+- each trust decision is hard to verify across the whole network.
+
+## What would have to change
+
+The companies do not need one giant shared database. They need a shared way to interact while each company keeps control of its own systems.
+
+A better model would let a company:
+
+1. publish a description of data it can share;
+2. define the policy that controls access;
+3. let authorized partners discover the offer;
+4. negotiate access automatically;
+5. transfer the data from the owner's system;
+6. signal updates without sending uncontrolled copies to everyone.
+
+That is the role of a dataspace.
+
+A dataspace does not remove the need for business agreements, governance, or careful implementation. It gives the participants a common pattern for data sharing so that every new partner does not require a new one-off integration.
+
+The rest of this path follows one supply-chain story to show how that pattern works.

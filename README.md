@@ -4,7 +4,7 @@ Guided learning paths for understanding, integrating, and building sovereign dat
 
 This repository contains the source for a static documentation site focused on practical dataspace onboarding. The current content is organized into four paths:
 
-- **Understand a Dataspace** — a scenario-based introduction using a product-information sharing use case.
+- **A Dataspace Use Case** — a story-first introduction using a product-information sharing use case.
 - **Integrate a Participant** — guidance for publishing data, consuming data, using management APIs, identity, and data planes.
 - **Set Up a Dataspace Platform** — guidance for managed dataspace services, provisioning, identity, and customer handoff.
 - **Build a Dataspace Offering** — guidance on what Eclipse components provide and what a provider builds or operates.

@@ -1,35 +1,75 @@
 ---
-title: "Chapter 12: What We Built"
+title: "Chapter 11: What We Built"
+description: "A summary of the use case and how the story maps to core dataspace concepts."
 ---
 
-| Company | What they do |
-|---------|-------------|
-| VeloForge Materials | Publishes material certificates |
-| FerroLink Industries | Pulls material data, publishes component docs |
-| QuantisSeal Labs | Publishes independent test reports |
-| LumenDrive Motors | Pulls from all three providers |
-| NebulaFlow Cloudworks | Pulls from all three for a different purpose |
+The story started with a familiar problem: several companies needed to share product information, but email, portals, and custom integrations would not scale.
 
-Three providers with their own data planes. Two consumers. Zero bilateral integrations.
+By the end, the companies had a dataspace pattern.
 
----
+VeloForge published material certificates. FerroLink consumed material evidence and published component documentation. QuantisSeal published independent test reports. LumenDrive assembled product evidence from multiple sources. NebulaFlow consumed selected data for analytics. TrustGrid defined the shared trust rules and issued membership credentials.
 
-Every interaction followed the same pattern:
+No central party became the owner of all documents. No provider built a custom integration for every consumer. No consumer needed a different access pattern for every provider.
 
-**Provider:** store document → describe in catalog → set policy
+## The full flow
 
-**Consumer:** browse catalog → negotiate contract → download document
+The use case followed this sequence:
 
----
+1. **VeloForge publishes data** — the ALX88 certificate becomes a catalog offer under a membership policy.
+2. **FerroLink consumes data** — it discovers the offer, negotiates access, and retrieves the certificate from VeloForge.
+3. **FerroLink becomes a provider** — it publishes BH-2026 component documentation using the same pattern.
+4. **QuantisSeal adds independent evidence** — its test report becomes another trusted source in the network.
+5. **LumenDrive assembles the picture** — it retrieves documents from several providers for compliance and product-passport work.
+6. **NebulaFlow uses the data differently** — it consumes allowed data for analytics rather than manufacturing.
+7. **Updates are signaled** — providers notify eligible consumers that new versions exist.
+8. **Trust changes are reflected** — expiration, revocation, and policy changes affect future access.
 
-| Before | After |
-|--------|-------|
-| New partner = new integration | New partner = issue a credential |
-| Sharing = email or portal | Sharing = publish to catalog |
-| Access = logins and API keys | Access = verifiable credentials |
-| Revoking = disable accounts | Revoking = revoke credential |
-| Updates = email everyone | Updates = notification + catalog |
+That sequence is not a one-off workflow hard-coded by a central operator. It is the result of independent participants using the same shared interaction model.
 
----
+## Before and after
 
-Five companies built their parts independently. Each provider runs its own data plane. Each consumer runs its own workflow. They share no code and no infrastructure. They share a protocol, a credential type, and the policies defined by the TrustGrid Consortium.
+| Before | With the dataspace pattern |
+|---|---|
+| New partner means a new integration or portal setup. | New partner uses the same discovery, negotiation, and transfer flow. |
+| Documents are emailed, forwarded, and duplicated. | Providers publish offers; data moves only after access is agreed. |
+| Access depends on local accounts and manual checks. | Access can depend on verifiable credentials and machine-readable policies. |
+| Updates are sent manually to guessed recipient lists. | Updates can be signaled to eligible consumers, who retrieve current data from the source. |
+| Revocation requires every system to be changed separately. | Future access can fail automatically when credentials expire or are revoked. |
+| Trust rules are hidden in each relationship. | Trust rules are expressed through credentials, issuers, and policies. |
+
+## Concept map
+
+| Story element | Dataspace concept |
+|---|---|
+| VeloForge, FerroLink, QuantisSeal, LumenDrive, NebulaFlow | Participants |
+| TrustGrid Consortium | Dataspace authority and membership issuer |
+| ALX88 certificate, BH-2026 documentation, test report | Assets |
+| Catalog entries for those documents | Offers |
+| Membership or role requirements | Policies |
+| Successful access request | Contract agreement |
+| Provider storage and serving endpoint | Data plane |
+| Catalog, policy, negotiation, and transfer coordination | Control plane |
+| Participant identity and credentials | Identity and trust layer |
+| Update signals | Notifications |
+
+## What the dataspace did not do
+
+It is just as important to be clear about what was not built.
+
+The dataspace did not replace every company's internal systems. VeloForge still manages its certificates. FerroLink still manages its component documentation. QuantisSeal still manages its reports.
+
+The dataspace did not remove governance. TrustGrid still needs rules for membership, credentials, policies, and participant conduct.
+
+The dataspace did not make all data public. Every offer remains controlled by provider policies.
+
+The dataspace did not guarantee that every implementation is production-ready. Real deployments need security hardening, monitoring, operational processes, legal agreements, and careful integration with existing systems.
+
+## The main lesson
+
+A dataspace is a way for independent organizations to share data under common rules without giving up control of their own systems.
+
+The story can be summarized in one sentence:
+
+> Providers publish controlled offers, consumers negotiate access with credentials, and data moves from the source under agreed policy.
+
+If that sentence describes a problem you recognize, the final chapter will help you decide whether a dataspace is the right fit.

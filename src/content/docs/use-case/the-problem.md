@@ -3,9 +3,9 @@ title: "Chapter 1: The Problem"
 description: "Why ordinary document sharing breaks down when many companies need controlled access to changing product information."
 ---
 
-LumenDrive Motors is preparing a new electric vehicle model for market. Before the vehicle can be approved, sold, serviced, and reported on, LumenDrive needs evidence from the companies upstream in its supply chain.
+NorthSea Wind Systems is preparing the **NSW-15 offshore wind turbine** for market. Before the turbine can be approved, installed, serviced, and reported on, NorthSea Wind needs evidence from the companies upstream in its supply chain.
 
-The battery housing uses a specific alloy. That alloy has a material certificate. The housing itself has component documentation. An independent lab has issued a test report. Later, analytics partners may need selected facts from the same document chain to monitor risk and compliance.
+One tower section uses a specific low-carbon steel batch. That steel has a mill certificate. The tower section has a fabrication dossier. An independent lab has issued a weld and fatigue report. Later, analytics partners may need selected facts from the same evidence chain to monitor risk, carbon footprint, and compliance.
 
 The request sounds simple: send us the product information we need.
 
@@ -23,7 +23,7 @@ All three approaches share the same weakness: every relationship becomes its own
 
 ## The trust problem is just as important as the data problem
 
-The documents are not all public. A material certificate may be available to qualified customers. A test report may be available only to active consortium members. A component specification may be restricted to manufacturers using the component in an approved product line.
+The documents are not all public. A steel mill certificate may be available to qualified customers. A weld and fatigue report may be available only to active consortium members. A tower-section specification may be restricted to turbine manufacturers using the section in an approved product line.
 
 So the question is not only:
 
@@ -39,7 +39,7 @@ If every supplier answers those questions differently, the ecosystem becomes har
 
 Product information changes.
 
-A supplier updates a material certificate after improving the recycled content of an alloy. A test lab corrects a report. A component maker releases a new version of an assembly specification. A consortium suspends a participant's membership. A policy changes because a document becomes more sensitive.
+A supplier updates a steel mill certificate after lowering the declared carbon intensity of a steel batch. A test lab corrects a report. A fabricator releases a new version of a welding procedure. A consortium suspends a participant's membership. A policy changes because a document becomes more sensitive.
 
 With email, old copies remain in circulation. With portals, every portal needs its own update. With direct integrations, each integration needs to handle change events in a compatible way.
 

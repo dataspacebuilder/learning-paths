@@ -3,24 +3,24 @@ title: "Chapter 7: Trust Enters the Picture"
 description: "How credentials, issuers, and independent evidence make access decisions more reliable than portal accounts or email history."
 ---
 
-So far, the story has used one simple trust rule: active TrustGrid members may access certain offers.
+So far, the story has used one simple trust rule: active WindData Alliance members may access certain offers.
 
 That is enough for some documents, but not for every situation. Product information often needs stronger evidence. A company may need to prove that it is a current member, that it has a specific role, that it is accredited for a task, or that a document came from an independent source.
 
 This is where credentials and issuers become important.
 
-## QuantisSeal adds independent evidence
+## SafeLoad adds independent evidence
 
-FerroLink sends battery housing BH-2026 to **QuantisSeal Labs** for testing. QuantisSeal runs impact, thermal, and environmental checks and produces a test report.
+TowerWorks sends tower section TS-42 to **SafeLoad Labs** for testing. SafeLoad runs weld, fatigue, corrosion, and structural checks and produces a weld and fatigue report.
 
-The test report matters because QuantisSeal is not the supplier and not the vehicle manufacturer. It is an independent lab. LumenDrive can use the report as neutral evidence when it assembles compliance documentation.
+The weld and fatigue report matters because SafeLoad is not the steel supplier and not the turbine manufacturer. It is an independent lab. NorthSea Wind can use the report as neutral evidence when it assembles compliance documentation.
 
-QuantisSeal publishes the report through the dataspace in the same way VeloForge and FerroLink published their documents:
+SafeLoad publishes the report through the dataspace in the same way GreenSteel and TowerWorks published their documents:
 
-1. the report stays in QuantisSeal's environment;
-2. QuantisSeal creates an asset description;
-3. QuantisSeal attaches an access policy;
-4. the offer appears in QuantisSeal's catalog.
+1. the report stays in SafeLoad's environment;
+2. SafeLoad creates an asset description;
+3. SafeLoad attaches an access policy;
+4. the offer appears in SafeLoad's catalog.
 
 The publication pattern is the same. The trust meaning is different.
 
@@ -28,7 +28,7 @@ The publication pattern is the same. The trust meaning is different.
 
 A credential is a verifiable statement issued by a trusted authority.
 
-In this story, TrustGrid can issue a credential that says a company is an active dataspace member. A different authority could issue a credential that says a laboratory is accredited. A manufacturer could issue a service-partner credential to approved repair companies. A regulator could issue a legal-entity credential.
+In this story, WindData Alliance can issue a credential that says a company is an active dataspace member. A different authority could issue a credential that says a laboratory is accredited. A manufacturer could issue a service-partner credential to approved repair companies. A regulator could issue a legal-entity credential.
 
 The exact credential types depend on the dataspace. The important idea is that policies can refer to credentials instead of relying on informal trust.
 
@@ -36,16 +36,16 @@ For example:
 
 | Business rule | Credential-based expression |
 |---|---|
-| Only active TrustGrid members may access basic product documents. | Require a valid TrustGrid membership credential. |
-| Only accredited labs may publish official test reports. | Require a valid lab-accreditation credential. |
-| Only approved vehicle manufacturers may access detailed component specifications. | Require a role or customer-relationship credential. |
+| Only active WindData Alliance members may access basic product documents. | Require a valid WindData Alliance membership credential. |
+| Only accredited labs may publish official weld and fatigue reports. | Require a valid lab-accreditation credential. |
+| Only approved turbine manufacturers may access detailed tower-section specifications. | Require a role or customer-relationship credential. |
 | Suspended participants must not receive new data. | Reject revoked or expired credentials. |
 
 The policy does not need to know every future company in advance. It can ask for a kind of proof.
 
 ## The issuer does not have to serve the data
 
-TrustGrid may issue membership credentials, but it does not serve VeloForge's certificate or FerroLink's component documentation. An accreditation body may issue a lab credential, but it does not serve QuantisSeal's test report.
+WindData Alliance may issue membership credentials, but it does not serve GreenSteel's certificate or TowerWorks's tower-section dossier. An accreditation body may issue a lab credential, but it does not serve SafeLoad's weld and fatigue report.
 
 Issuing trust and serving data are separate responsibilities.
 
@@ -61,7 +61,7 @@ That separation keeps the model flexible:
 
 Credentials are useful because they can be checked during catalog access, contract negotiation, and transfer authorization.
 
-If FerroLink has a valid membership credential, VeloForge's policy can allow the negotiation. If NebulaFlow's membership is suspended later, a future negotiation can fail without VeloForge manually editing a partner list.
+If TowerWorks has a valid membership credential, GreenSteel's policy can allow the negotiation. If GridSight's membership is suspended later, a future negotiation can fail without GreenSteel manually editing a partner list.
 
 This is the shift from account-based sharing to credential-based sharing:
 

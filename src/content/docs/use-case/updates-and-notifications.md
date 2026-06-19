@@ -5,25 +5,25 @@ description: "How providers signal that data changed while keeping catalog, cont
 
 Product information does not stay still.
 
-VeloForge improves the recycling process for ALX88. The recycled content changes from 80% to 87%, and VeloForge issues a new version of the material certificate.
+GreenSteel improves the low-carbon production route for GS-87. The declared carbon intensity drops from 1.20 to 0.95 tCO₂e per tonne, and GreenSteel issues a new version of the steel mill certificate.
 
-That update matters downstream. FerroLink used ALX88 to make BH-2026. LumenDrive uses BH-2026 in a vehicle. NebulaFlow monitors material and compliance indicators. If those participants keep using the old certificate, the product record becomes stale.
+That update matters downstream. TowerWorks used GS-87 to fabricate TS-42. NorthSea Wind uses TS-42 in the NSW-15 turbine. GridSight monitors material, carbon, and compliance indicators. If those participants keep using the old certificate, the product record becomes stale.
 
 The question is not only how to share data once. It is how to keep a network in sync when the source changes.
 
-## VeloForge updates the source
+## GreenSteel updates the source
 
-VeloForge replaces or versions the certificate in its own environment. It updates the asset metadata in its catalog so consumers can see that a newer version exists.
+GreenSteel replaces or versions the certificate in its own environment. It updates the asset metadata in its catalog so consumers can see that a newer version exists.
 
-The new certificate still belongs to VeloForge. The policy still applies. Consumers do not automatically receive the document just because it changed.
+The new certificate still belongs to GreenSteel. The policy still applies. Consumers do not automatically receive the document just because it changed.
 
-Instead, VeloForge sends a notification.
+Instead, GreenSteel sends a notification.
 
 ## A notification is a signal, not the document
 
 A notification can say:
 
-> A new version of the ALX88 material certificate is available.
+> A new version of the GS-87 steel mill certificate is available.
 
 It does not need to include the PDF. It should not bypass the normal access decision.
 
@@ -42,21 +42,21 @@ The notification improves awareness. It does not replace authorization.
 
 ## Updates can cascade without becoming one central workflow
 
-FerroLink receives the signal that VeloForge's certificate changed. It retrieves the new certificate through the normal dataspace flow and updates the BH-2026 component documentation if the change affects its own record.
+TowerWorks receives the signal that GreenSteel's certificate changed. It retrieves the new certificate through the normal dataspace flow and updates the TS-42 tower-section dossier if the change affects its own record.
 
-FerroLink can then signal that its component documentation has a new version.
+TowerWorks can then signal that its tower-section dossier has a new version.
 
-LumenDrive and NebulaFlow react according to their own needs and permissions.
+NorthSea Wind and GridSight react according to their own needs and permissions.
 
 ```text
-VeloForge updates ALX88 certificate
+GreenSteel updates GS-87 certificate
         │
-        ├── notifies FerroLink
+        ├── notifies TowerWorks
         │        │
-        │        └── FerroLink updates BH-2026 documentation
+        │        └── TowerWorks updates TS-42 dossier
         │                 │
-        │                 ├── notifies LumenDrive
-        │                 └── notifies NebulaFlow if eligible
+        │                 ├── notifies NorthSea Wind
+        │                 └── notifies GridSight if eligible
         │
         └── notifies other eligible consumers directly
 ```

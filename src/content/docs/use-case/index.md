@@ -5,7 +5,7 @@ description: "A story-first introduction to dataspaces through a cross-company p
 
 This learning path explains dataspaces through one fictional but realistic use case.
 
-A group of manufacturing companies needs to share product documents across company boundaries: material certificates, component documentation, independent test reports, product-passport evidence, and analytics inputs. They do not want to email uncontrolled copies, maintain one portal per partner, or build a new integration for every relationship.
+A group of offshore wind companies needs to share product documents across company boundaries: low-carbon steel certificates, tower-section dossiers, independent weld and fatigue reports, product-passport evidence, and analytics inputs. They do not want to email uncontrolled copies, maintain one portal per partner, or build a new integration for every relationship.
 
 Instead, they use a dataspace. Each company keeps control of its own data, publishes descriptions of what it can share, and lets authorized partners discover, negotiate, and retrieve data through a shared protocol.
 

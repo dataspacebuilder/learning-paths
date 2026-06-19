@@ -39,9 +39,9 @@ The names can sound technical, but the idea is simple: control decisions and dat
 
 ## Data is not stored centrally
 
-The story does not create a central TrustGrid document repository.
+The story does not create a central WindData Alliance document repository.
 
-VeloForge's material certificate stays with VeloForge. FerroLink's component documentation stays with FerroLink. QuantisSeal's test report stays with QuantisSeal.
+GreenSteel's steel mill certificate stays with GreenSteel. TowerWorks's tower-section dossier stays with TowerWorks. SafeLoad's weld and fatigue report stays with SafeLoad.
 
 The catalog contains descriptions and offers, not the full documents. A consumer receives the document from the provider's data plane after a contract is agreed.
 
@@ -51,7 +51,7 @@ This keeps responsibility clear. The provider remains responsible for the data i
 
 A catalog entry is not an open download link.
 
-When FerroLink requests VeloForge's certificate, VeloForge can check whether FerroLink is an active TrustGrid member. If the policy requires a stronger credential, the same negotiation flow can check for that instead.
+When TowerWorks requests GreenSteel's certificate, GreenSteel can check whether TowerWorks is an active WindData Alliance member. If the policy requires a stronger credential, the same negotiation flow can check for that instead.
 
 The consumer does not manually email a PDF request. The provider does not manually inspect an inbox. The connector software exchanges the required information and records the outcome.
 

@@ -7,7 +7,7 @@ The story started with a familiar problem: several companies needed to share pro
 
 By the end, the companies had a dataspace pattern.
 
-VeloForge published material certificates. FerroLink consumed material evidence and published component documentation. QuantisSeal published independent test reports. LumenDrive assembled product evidence from multiple sources. NebulaFlow consumed selected data for analytics. TrustGrid defined the shared trust rules and issued membership credentials.
+GreenSteel published steel mill certificates. TowerWorks consumed material evidence and published a tower-section dossier. SafeLoad published independent weld and fatigue reports. NorthSea Wind assembled turbine evidence from multiple sources. GridSight consumed selected data for analytics. WindData Alliance defined the shared trust rules and issued membership credentials.
 
 No central party became the owner of all documents. No provider built a custom integration for every consumer. No consumer needed a different access pattern for every provider.
 
@@ -15,12 +15,12 @@ No central party became the owner of all documents. No provider built a custom i
 
 The use case followed this sequence:
 
-1. **VeloForge publishes data** — the ALX88 certificate becomes a catalog offer under a membership policy.
-2. **FerroLink consumes data** — it discovers the offer, negotiates access, and retrieves the certificate from VeloForge.
-3. **FerroLink becomes a provider** — it publishes BH-2026 component documentation using the same pattern.
-4. **QuantisSeal adds independent evidence** — its test report becomes another trusted source in the network.
-5. **LumenDrive assembles the picture** — it retrieves documents from several providers for compliance and product-passport work.
-6. **NebulaFlow uses the data differently** — it consumes allowed data for analytics rather than manufacturing.
+1. **GreenSteel publishes data** — the GS-87 steel mill certificate becomes a catalog offer under a membership policy.
+2. **TowerWorks consumes data** — it discovers the offer, negotiates access, and retrieves the certificate from GreenSteel.
+3. **TowerWorks becomes a provider** — it publishes the TS-42 tower-section dossier using the same pattern.
+4. **SafeLoad adds independent evidence** — its weld and fatigue report becomes another trusted source in the network.
+5. **NorthSea Wind assembles the picture** — it retrieves documents from several providers for compliance and product-passport work.
+6. **GridSight uses the data differently** — it consumes allowed data for analytics rather than manufacturing.
 7. **Updates are signaled** — providers notify eligible consumers that new versions exist.
 8. **Trust changes are reflected** — expiration, revocation, and policy changes affect future access.
 
@@ -41,9 +41,9 @@ That sequence is not a one-off workflow hard-coded by a central operator. It is 
 
 | Story element | Dataspace concept |
 |---|---|
-| VeloForge, FerroLink, QuantisSeal, LumenDrive, NebulaFlow | Participants |
-| TrustGrid Consortium | Dataspace authority and membership issuer |
-| ALX88 certificate, BH-2026 documentation, test report | Assets |
+| GreenSteel, TowerWorks, SafeLoad, NorthSea Wind, GridSight | Participants |
+| WindData Alliance | Dataspace authority and membership issuer |
+| GS-87 steel mill certificate, TS-42 tower-section dossier, TS-42 weld and fatigue report | Assets |
 | Catalog entries for those documents | Offers |
 | Membership or role requirements | Policies |
 | Successful access request | Contract agreement |
@@ -56,9 +56,9 @@ That sequence is not a one-off workflow hard-coded by a central operator. It is 
 
 It is just as important to be clear about what was not built.
 
-The dataspace did not replace every company's internal systems. VeloForge still manages its certificates. FerroLink still manages its component documentation. QuantisSeal still manages its reports.
+The dataspace did not replace every company's internal systems. GreenSteel still manages its certificates. TowerWorks still manages its tower-section dossiers. SafeLoad still manages its reports.
 
-The dataspace did not remove governance. TrustGrid still needs rules for membership, credentials, policies, and participant conduct.
+The dataspace did not remove governance. WindData Alliance still needs rules for membership, credentials, policies, and participant conduct.
 
 The dataspace did not make all data public. Every offer remains controlled by provider policies.
 

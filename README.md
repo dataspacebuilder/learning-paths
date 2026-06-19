@@ -1,6 +1,17 @@
-# Documentation
+# Learn Dataspaces
 
-Minimal Astro Starlight documentation project.
+Guided learning paths for understanding, integrating, and building sovereign data sharing systems.
+
+This repository contains the source for a static documentation site focused on practical dataspace onboarding. The current content is organized into four paths:
+
+- **Understand a Dataspace** — a scenario-based introduction using a product-information sharing use case.
+- **Integrate a Participant** — guidance for publishing data, consuming data, using management APIs, identity, and data planes.
+- **Set Up a Dataspace Platform** — guidance for managed dataspace services, provisioning, identity, and customer handoff.
+- **Build a Dataspace Offering** — guidance on what Eclipse components provide and what a provider builds or operates.
+
+## Content
+
+Documentation source files live in `src/content/docs/` as Markdown or MDX.
 
 ## Requirements
 
@@ -18,16 +29,10 @@ npm run build
 npm run preview
 ```
 
-For reproducible installs in CI, use:
+For reproducible installs in CI:
 
 ```sh
 npm ci
 ```
 
 The production build is emitted to `dist/` and can be served by any static web server.
-
-## Notes
-
-- Documentation pages live in `src/content/docs/` as Markdown or MDX.
-- Local Starlight search is enabled by default for production builds.
-- No OpenAPI viewer, hosted search, analytics, or AI features are configured.

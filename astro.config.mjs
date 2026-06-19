@@ -3,6 +3,8 @@ import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 
 export default defineConfig({
+  site: 'https://dataspacebuilder.github.io',
+  base: '/learning-paths',
   integrations: [
     starlight({
       title: 'Learn Dataspaces',

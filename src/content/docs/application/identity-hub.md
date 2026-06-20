@@ -95,4 +95,4 @@ Do not let an application mint its own credentials unless it is explicitly actin
 
 This path does not define credential schemas, trusted issuers, legal onboarding rules, revocation policy, or dataspace profile governance.
 
-Application developers should consume those decisions. Trust designers and dataspace authorities define them.
+Application developers should consume those decisions. Trust designers and dataspace authorities define them in [Design Trust, Credentials, and Dataspace Profiles](../trust-and-profiles/).

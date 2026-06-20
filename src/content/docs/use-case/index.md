@@ -54,4 +54,4 @@ By the end of the path, you will be able to explain:
 
 ## What this path does not cover
 
-This path does not teach API calls, deployment steps, production hardening, or policy syntax in detail. It gives you the mental model first. Later paths can then explain how to operate the platform, build applications, and design the trust model.
+This path does not teach API calls, deployment steps, production hardening, or policy syntax in detail. It gives you the mental model first. Later paths can then explain how to operate the platform, build applications, and [design the trust model](../trust-and-profiles/).

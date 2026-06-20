@@ -89,4 +89,4 @@ By the end of this path, you will be able to:
 
 ## What this path does not cover
 
-This path is not a complete API reference, a production-hardening checklist, or a governance manual. It explains how to build applications against dataspace platform surfaces. For exact endpoint details, use the upstream EDC documentation and samples for your deployed version. For trust-framework and credential-schema decisions, use the dedicated trust and profiles material as it is added to the learning site.
+This path is not a complete API reference, a production-hardening checklist, or a governance manual. It explains how to build applications against dataspace platform surfaces. For exact endpoint details, use the upstream EDC documentation and samples for your deployed version. For trust-framework and credential-schema decisions, use [Design Trust, Credentials, and Dataspace Profiles](../trust-and-profiles/).

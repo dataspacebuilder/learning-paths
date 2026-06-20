@@ -98,4 +98,4 @@ If you want to operate the infrastructure that lets participants join and use da
 
 If you want to build software that publishes, consumes, or serves data through a dataspace, continue with [Build a Dataspace Application](../application/).
 
-If your main concern is governance, credentials, issuers, onboarding, and trust rules, use this path as the narrative foundation for the dedicated trust and profiles material as it is added to the learning site.
+If your main concern is governance, credentials, issuers, onboarding, and trust rules, use this path as the narrative foundation, then continue with [Design Trust, Credentials, and Dataspace Profiles](../trust-and-profiles/).

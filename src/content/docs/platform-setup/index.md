@@ -81,4 +81,4 @@ By the end of this path, you will be able to:
 
 ## What this path does not cover
 
-This path is not a production hardening checklist, a complete Kubernetes runbook, or a full application-development tutorial. It explains the operator view and the platform shape. Application behavior belongs in [Build a Dataspace Application](../application/). Detailed governance, legal onboarding rules, and credential schema design belong in a dedicated trust and profile design track.
+This path is not a production hardening checklist, a complete Kubernetes runbook, or a full application-development tutorial. It explains the operator view and the platform shape. Application behavior belongs in [Build a Dataspace Application](../application/). Detailed governance, legal onboarding rules, and credential schema design belong in [Design Trust, Credentials, and Dataspace Profiles](../trust-and-profiles/).

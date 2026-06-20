@@ -28,7 +28,7 @@ There are three common models:
 | External issuer | The dataspace authority, trust framework, or another organization operates the issuer. The platform integrates with it. |
 | Multiple issuers | Different credentials come from different trusted issuers, such as membership, lab accreditation, or compliance evidence. |
 
-The choice is a governance decision as much as a deployment decision. The platform path covers how the service fits operationally. Credential schema design and trust framework decisions belong in a trust-design track.
+The choice is a governance decision as much as a deployment decision. The platform path covers how the service fits operationally. Credential schema design and trust framework decisions belong in [Design Trust, Credentials, and Dataspace Profiles](../trust-and-profiles/).
 
 ## Federated Catalog
 

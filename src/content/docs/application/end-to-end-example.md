@@ -145,4 +145,4 @@ That is the heart of building a dataspace application: use the platform APIs for
 
 If you need to operate the platform behind these APIs, continue with [Set Up a Dataspace Platform](../platform-setup/).
 
-If your main work is defining credentials, issuers, onboarding rules, and dataspace profiles, use the dedicated trust and profiles material as it is added to the learning site.
+If your main work is defining credentials, issuers, onboarding rules, and dataspace profiles, continue with [Design Trust, Credentials, and Dataspace Profiles](../trust-and-profiles/).

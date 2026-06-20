@@ -38,7 +38,7 @@ It may include:
 - revocation and renewal expectations;
 - data-plane requirements or allowed transfer types.
 
-The dataspace profile does not replace the governance document. It makes selected governance decisions executable by the platform.
+The dataspace profile does not replace the governance document. It makes selected governance decisions executable by the platform. The governance and credential-design side is covered in [Design Trust, Credentials, and Dataspace Profiles](../trust-and-profiles/).
 
 ## Participant profiles
 

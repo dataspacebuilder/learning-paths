@@ -94,4 +94,4 @@ For example, an application that manages turbine evidence packs could:
 
 There is no separate generic data plane beside it. The application is the data plane because it implements the signaling and transfer behavior.
 
-This path explains the platform decision. Building such an application belongs in [Build a Dataspace Application](../system-integration/).
+This path explains the platform decision. Building such an application belongs in [Build a Dataspace Application](../application/).

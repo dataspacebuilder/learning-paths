@@ -72,7 +72,7 @@ As the platform grows, do not blur these boundaries:
 
 After completing this path:
 
-- application teams should continue with [Build a Dataspace Application](../system-integration/);
+- application teams should continue with [Build a Dataspace Application](../application/);
 - trust and governance teams should define credential schemas, issuer roles, trust lists, and dataspace profile rules;
 - platform teams should turn the baseline into runbooks, dashboards, backup procedures, and support playbooks;
 - product teams should decide which optional services are needed for the first real participants.

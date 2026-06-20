@@ -96,6 +96,6 @@ If the answers point to repeated, governed, cross-organization sharing, a datasp
 
 If you want to operate the infrastructure that lets participants join and use dataspaces, continue with [Set Up a Dataspace Platform](../platform-setup/).
 
-If you want to build software that publishes, consumes, or serves data through a dataspace, continue with the application-building material in [Build a Dataspace Application](../system-integration/).
+If you want to build software that publishes, consumes, or serves data through a dataspace, continue with [Build a Dataspace Application](../application/).
 
 If your main concern is governance, credentials, issuers, onboarding, and trust rules, use this path as the narrative foundation for the dedicated trust and profiles material as it is added to the learning site.

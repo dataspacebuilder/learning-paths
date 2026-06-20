@@ -6,7 +6,7 @@ This repository contains the source for a static documentation site focused on p
 
 - **A Dataspace Use Case** — a story-first introduction using an offshore wind product-information sharing use case.
 - **Set Up a Dataspace Platform** — guidance for deploying and operating managed, self-hosted, and hybrid dataspace platform capabilities.
-- **Build a Dataspace Application** — guidance for publishing data, consuming data, using management APIs, identity, and data planes.
+- **Build a Dataspace Application** — guidance for building participant software that publishes data, consumes data, negotiates access, uses identity, and serves data through managed, standalone, or application-based data planes.
 
 ## Content
 

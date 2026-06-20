@@ -68,7 +68,7 @@ Many participants will give the package to a system integrator or application te
 - provide sample policies or asset templates if your platform offers them;
 - link to the application-building material for publishing, consuming, and data-plane integration.
 
-For application-side work, continue with [Build a Dataspace Application](../system-integration/).
+For application-side work, continue with [Build a Dataspace Application](../application/).
 
 ## Data plane handoff
 

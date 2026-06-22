@@ -66,25 +66,9 @@ That creates three useful properties:
 2. **Changeability** — expired, suspended, or revoked credentials affect future access decisions.
 3. **Explainability** — a failed negotiation can point to a missing credential, untrusted issuer, expired claim, or incompatible policy.
 
-## Trust decisions become technical inputs
-
-Governance choices must become concrete enough for systems to use.
-
-| Governance question | Technical or operational output |
-|---|---|
-| Who may join WindData Alliance? | Membership policy and onboarding workflow. |
-| What proof does a member receive? | `WindDataMembershipCredential` schema and issuer configuration. |
-| Who may issue lab accreditation? | Trusted issuer list for lab credentials. |
-| Which protocols and versions are accepted? | Dataspace profile and protocol context configuration. |
-| What can active members see? | Access policy templates. |
-| What can approved manufacturers negotiate? | Contract policy templates. |
-| What happens when a member is suspended? | Credential status, revocation, participant suspension, and policy behavior. |
-
-If these outputs are missing, platform teams and application teams will invent incompatible interpretations.
-
 ## The design package
 
-For this path, assume WindData Alliance wants to define a first production-like profile for offshore wind product-passport evidence.
+For this path, assume WindData Alliance wants to define a first production-like profile for offshore wind product-passport evidence. The chapters move from the conceptual trust problem into the concrete decisions a governance team must make: who has which role, what the shared profile contains, which credentials and issuers are accepted, how onboarding works, and how policies depend on verifiable evidence.
 
 The trust team should produce:
 

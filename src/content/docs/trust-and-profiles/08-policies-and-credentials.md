@@ -9,7 +9,7 @@ A policy says what must be true before a participant can see an offer, negotiate
 
 This chapter is not a full ODRL tutorial. It shows how trust designers map rules to policy templates that platform and application teams can use.
 
-For the deeper policy treatment, use the [IDSA Rulebook policy chapter](https://github.com/International-Data-Spaces-Association/IDSA-Rulebook/blob/main/documentation/105_Policies.md). Application implementation patterns are covered in [Policy Design for Applications](../application/policy-design/).
+For the deeper policy treatment, use the [IDSA Rulebook policy chapter](https://github.com/International-Data-Spaces-Association/IDSA-Rulebook/blob/main/documentation/105_Policies.md). Application implementation patterns are covered in [Policy Design for Applications](../application/08-policy-design/).
 
 ## The mapping pattern
 

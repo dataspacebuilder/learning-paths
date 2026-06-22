@@ -61,7 +61,7 @@ Issuance should be traceable. A support team should be able to answer:
 
 The holder stores credentials in its identity infrastructure, such as Identity Hub.
 
-The application path explains what application developers need to know in [Working with Identity Hub](../application/identity-hub/). Trust designers need to define what credentials should be available and how they are expected to be presented.
+The application path explains what application developers need to know in [Working with Identity Hub](../application/07-identity-hub/). Trust designers need to define what credentials should be available and how they are expected to be presented.
 
 Do not make domain applications store raw credentials unless there is a strong reason. Let identity infrastructure handle credential storage and presentation.
 
@@ -150,7 +150,7 @@ Reasons include:
 
 Revocation should affect future trust decisions. It does not automatically erase data already transferred under a valid agreement. Retention, deletion, and downstream usage obligations need legal and application controls.
 
-The use case chapter [Trust Changes](../use-case/trust-changes/) illustrates this distinction in story form.
+The use case chapter [Trust Changes](../use-case/10-trust-changes/) illustrates this distinction in story form.
 
 ## Offboarding
 

@@ -62,22 +62,22 @@ By the end of this path, you will be able to:
 
 | # | Chapter | What you will learn |
 |---|---|---|
-| 1 | [Platform Operating Models](./platform-operating-models/) | Managed, self-hosted, and hybrid ways to operate dataspace infrastructure. |
-| 2 | [Component Map](./component-map/) | The major platform components and how they fit together. |
-| 3 | [What Eclipse Provides vs. What You Build](./responsibility-split/) | The responsibility split between Eclipse projects, operators, customers, and dataspace authorities. |
-| 4 | [Infrastructure Prerequisites](./prerequisites/) | The cluster, databases, identity provider, messaging, secrets, networking, and operations foundations you need. |
-| 5 | [Deploy EDC Services](./edc-services/) | Control Plane and Identity Hub deployment, endpoints, persistence, and participant isolation. |
-| 6 | [Deploy Connector Fabric Manager](./connector-fabric-manager/) | Tenant Manager, Provision Manager, orchestration, and bootstrap configuration. |
-| 7 | [Deploy Activity Agents](./activity-agents/) | IDP, EDC, registration, and onboarding agents. |
-| 8 | [Identity Provider Setup](./identity-provider-setup/) | JWT claims, roles, scopes, clients, and context isolation. |
-| 9 | [Dataspace Profiles and Cells](./dataspace-profiles-and-cells/) | How platform zones and dataspace-specific configuration are modeled. |
-| 10 | [Provision Participants](./provisioning-participants/) | Tenant creation, participant profile deployment, DID setup, and credential bootstrapping. |
-| 11 | [Customer Handoff](./customer-handoff/) | What a participant or integrator receives after provisioning. |
-| 12 | [Self-Hosted Connector Track](./self-hosted-connector-track/) | How the model changes when a participant operates its own stack. |
-| 13 | [Add Portal and Observability](./portal-and-observability/) | Customer UX, platform status, logs, metrics, health checks, and alerts. |
-| 14 | [Add Data Plane Capabilities](./data-plane-capabilities/) | Managed data planes, customer-operated data planes, capability selection, and app-as-data-plane patterns. |
-| 15 | [Optional Platform Services](./optional-platform-services/) | Issuer Service, federated catalog, onboarding frontends, and other optional services. |
-| 16 | [From Baseline to Offering](./baseline-to-offering/) | A maturity model for growing from a baseline deployment into a complete service. |
+| 1 | [Platform Operating Models](./01-platform-operating-models/) | Managed, self-hosted, and hybrid ways to operate dataspace infrastructure. |
+| 2 | [Component Map](./02-component-map/) | The major platform components and how they fit together. |
+| 3 | [What Eclipse Provides vs. What You Build](./03-responsibility-split/) | The responsibility split between Eclipse projects, operators, customers, and dataspace authorities. |
+| 4 | [Infrastructure Prerequisites](./04-prerequisites/) | The cluster, databases, identity provider, messaging, secrets, networking, and operations foundations you need. |
+| 5 | [Deploy EDC Services](./05-edc-services/) | Control Plane and Identity Hub deployment, endpoints, persistence, and participant isolation. |
+| 6 | [Deploy Connector Fabric Manager](./06-connector-fabric-manager/) | Tenant Manager, Provision Manager, orchestration, and bootstrap configuration. |
+| 7 | [Deploy Activity Agents](./07-activity-agents/) | IDP, EDC, registration, and onboarding agents. |
+| 8 | [Identity Provider Setup](./08-identity-provider-setup/) | JWT claims, roles, scopes, clients, and context isolation. |
+| 9 | [Dataspace Profiles and Cells](./09-dataspace-profiles-and-cells/) | How platform zones and dataspace-specific configuration are modeled. |
+| 10 | [Provision Participants](./10-provisioning-participants/) | Tenant creation, participant profile deployment, DID setup, and credential bootstrapping. |
+| 11 | [Customer Handoff](./11-customer-handoff/) | What a participant or integrator receives after provisioning. |
+| 12 | [Self-Hosted Connector Track](./12-self-hosted-connector-track/) | How the model changes when a participant operates its own stack. |
+| 13 | [Add Portal and Observability](./13-portal-and-observability/) | Customer UX, platform status, logs, metrics, health checks, and alerts. |
+| 14 | [Add Data Plane Capabilities](./14-data-plane-capabilities/) | Managed data planes, customer-operated data planes, capability selection, and app-as-data-plane patterns. |
+| 15 | [Optional Platform Services](./15-optional-platform-services/) | Issuer Service, federated catalog, onboarding frontends, and other optional services. |
+| 16 | [From Baseline to Offering](./16-baseline-to-offering/) | A maturity model for growing from a baseline deployment into a complete service. |
 
 ## What this path does not cover
 

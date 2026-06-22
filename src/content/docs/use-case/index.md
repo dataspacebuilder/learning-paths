@@ -39,18 +39,18 @@ By the end of the path, you will be able to explain:
 
 | # | Chapter | What you will learn |
 |---|---|---|
-| 1 | [The Problem](./the-problem/) | Why product-document sharing becomes brittle across many partners. |
-| 2 | [The Companies](./the-companies/) | The participants in the story and the roles they play. |
-| 3 | [How a Dataspace Works](./how-a-dataspace-works/) | The basic rules: publish, discover, negotiate, transfer, and stay in control. |
-| 4 | [Provider Publishes Data](./provider-publishes-data/) | How the first company makes a document available without sending it anywhere. |
-| 5 | [Consumer Discovers and Negotiates](./consumer-discovers-and-negotiates/) | How another company finds the offer, proves eligibility, and receives access. |
-| 6 | [Consumer Becomes Provider](./consumer-becomes-provider/) | Why provider and consumer are roles, not fixed company types. |
-| 7 | [Trust Enters the Picture](./trust-enters-the-picture/) | How credentials, issuers, and trusted evidence shape access decisions. |
-| 8 | [Multiple Consumers and Use Cases](./multiple-consumers-and-use-cases/) | How the same published data can support different downstream needs. |
-| 9 | [Updates and Notifications](./updates-and-notifications/) | How changes are signaled without bypassing access control. |
-| 10 | [Trust Changes](./trust-changes/) | What happens when credentials expire, access is revoked, or policies tighten. |
-| 11 | [What We Built](./what-we-built/) | How the full story maps to dataspace concepts. |
-| 12 | [Is a Dataspace Right for You?](./is-a-dataspace-right-for-you/) | A practical checklist for deciding whether this model fits your problem. |
+| 1 | [The Problem](./01-the-problem/) | Why product-document sharing becomes brittle across many partners. |
+| 2 | [The Companies](./02-the-companies/) | The participants in the story and the roles they play. |
+| 3 | [How a Dataspace Works](./03-how-a-dataspace-works/) | The basic rules: publish, discover, negotiate, transfer, and stay in control. |
+| 4 | [Provider Publishes Data](./04-provider-publishes-data/) | How the first company makes a document available without sending it anywhere. |
+| 5 | [Consumer Discovers and Negotiates](./05-consumer-discovers-and-negotiates/) | How another company finds the offer, proves eligibility, and receives access. |
+| 6 | [Consumer Becomes Provider](./06-consumer-becomes-provider/) | Why provider and consumer are roles, not fixed company types. |
+| 7 | [Trust Enters the Picture](./07-trust-enters-the-picture/) | How credentials, issuers, and trusted evidence shape access decisions. |
+| 8 | [Multiple Consumers and Use Cases](./08-multiple-consumers-and-use-cases/) | How the same published data can support different downstream needs. |
+| 9 | [Updates and Notifications](./09-updates-and-notifications/) | How changes are signaled without bypassing access control. |
+| 10 | [Trust Changes](./10-trust-changes/) | What happens when credentials expire, access is revoked, or policies tighten. |
+| 11 | [What We Built](./11-what-we-built/) | How the full story maps to dataspace concepts. |
+| 12 | [Is a Dataspace Right for You?](./12-is-a-dataspace-right-for-you/) | A practical checklist for deciding whether this model fits your problem. |
 
 ## What this path does not cover
 

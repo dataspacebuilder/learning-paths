@@ -5,7 +5,7 @@ description: "Governance and trust-design path for defining profiles, credential
 
 This learning path is for the people who define what it means to be trusted in a dataspace.
 
-In the offshore wind story, WindData Alliance does more than name a use case. It decides who may join, which evidence is required, which issuers are trusted, which credentials participants need, and which policy patterns providers can rely on. Without those decisions, GreenSteel, TowerWorks, SafeLoad, NorthSea Wind, and GridSight may have running connectors, but they still cannot make consistent trust decisions.
+ In the [offshore wind story](../use-case/), WindData Alliance does more than name a use case. It decides who may join, which evidence is required, which issuers are trusted, which credentials participants need, and which policy patterns providers can rely on. Without those decisions, GreenSteel, TowerWorks, SafeLoad, NorthSea Wind, and GridSight may have running connectors, but they still cannot make consistent trust decisions.
 
 A platform can provision contexts. An application can publish and consume data. The trust model explains **who is allowed to do what, based on which verifiable evidence, under which dataspace profile**.
 
@@ -60,31 +60,27 @@ By the end of this path, you will be able to:
 
 | # | Chapter | What you will learn |
 |---|---|---|
-| 1 | [Why Trust Matters](./why-trust-matters/) | Why identity, credentials, profiles, and governance are central to sovereign data sharing. |
-| 2 | [Roles in the Trust Model](./roles-in-the-trust-model/) | The functional roles: dataspace authority, participant, issuer, holder, verifier, registration service, operator, and application team. |
-| 3 | [Dataspace Profiles](./dataspace-profiles/) | How a profile turns governance choices into platform, protocol, credential, and policy configuration. |
-| 4 | [Credential Types and Schemas](./credential-types-and-schemas/) | How to define credential families, claims, validity, status, and versioning without over-collecting data. |
-| 5 | [Legal vs. Technical Onboarding](./legal-vs-technical-onboarding/) | How approval, evidence, provisioning, DID setup, and credential issuance fit together. |
-| 6 | [The Role of the Issuer Service](./issuer-service/) | How credential issuance can be operated, delegated, or integrated across multiple issuers. |
-| 7 | [Credential Lifecycle](./credential-lifecycle/) | How credentials are issued, stored, presented, renewed, suspended, revoked, and retired. |
-| 8 | [Policies and Credentials](./policies-and-credentials/) | How governance rules become policy templates that rely on credential claims. |
-| 9 | [Multiple Issuers and Trust Lists](./multiple-issuers-and-trust-lists/) | How to decide which issuers are trusted for which credential types and how to handle change. |
-| 10 | [Multi-Dataspace Configuration](./multi-dataspace-configuration/) | How one organization can participate in multiple dataspaces with separate profiles, credentials, and protocol contexts. |
-| 11 | [From Pilot to Scale](./from-pilot-to-scale/) | How to mature the trust model without turning every rule into custom code. |
+| 1 | [Why Trust Matters](./01-why-trust-matters/) | Why identity, credentials, profiles, and governance are central to sovereign data sharing. |
+| 2 | [Roles in the Trust Model](./02-roles-in-the-trust-model/) | The functional roles: dataspace authority, participant, issuer, holder, verifier, registration service, operator, and application team. |
+| 3 | [Dataspace Profiles](./03-dataspace-profiles/) | How a profile turns governance choices into platform, protocol, credential, and policy configuration. |
+| 4 | [Credential Types and Schemas](./04-credential-types-and-schemas/) | How to define credential families, claims, validity, status, and versioning without over-collecting data. |
+| 5 | [Legal vs. Technical Onboarding](./05-legal-vs-technical-onboarding/) | How approval, evidence, provisioning, DID setup, and credential issuance fit together. |
+| 6 | [The Role of the Issuer Service](./06-issuer-service/) | How credential issuance can be operated, delegated, or integrated across multiple issuers. |
+| 7 | [Credential Lifecycle](./07-credential-lifecycle/) | How credentials are issued, stored, presented, renewed, suspended, revoked, and retired. |
+| 8 | [Policies and Credentials](./08-policies-and-credentials/) | How governance rules become policy templates that rely on credential claims. |
+| 9 | [Multiple Issuers and Trust Lists](./09-multiple-issuers-and-trust-lists/) | How to decide which issuers are trusted for which credential types and how to handle change. |
+| 10 | [Multi-Dataspace Configuration](./10-multi-dataspace-configuration/) | How one organization can participate in multiple dataspaces with separate profiles, credentials, and protocol contexts. |
+| 11 | [From Pilot to Scale](./11-from-pilot-to-scale/) | How to mature the trust model without turning every rule into custom code. |
 
 ## Reference material
 
-This path explains design decisions and shows how they connect to the other learning paths. It does not replace the deeper rulebook and component references.
+This path explains design decisions and shows how they connect to the other learning paths. It does not replace the formal IDSA Rulebook.
 
-Use these as primary references when you need the formal or component-specific treatment:
+For the formal treatment, use the relevant IDSA Rulebook chapters:
 
 - [IDSA Rulebook — Trust](https://github.com/International-Data-Spaces-Association/IDSA-Rulebook/blob/main/documentation/008_Trust.md)
 - [IDSA Rulebook — Dataspace Trust Frameworks](https://github.com/International-Data-Spaces-Association/IDSA-Rulebook/blob/main/documentation/009_Dataspace_Trust_Frameworks.md)
 - [IDSA Rulebook — Policies](https://github.com/International-Data-Spaces-Association/IDSA-Rulebook/blob/main/documentation/105_Policies.md)
-- [Dataspace Builder Concepts — Trust and Governance](https://dataspacebuilder.github.io/website/docs/concepts/trust-and-governance)
-- [Dataspace Builder Concepts — Onboarding and Registration](https://dataspacebuilder.github.io/website/docs/concepts/onboarding-and-registration)
-- [EDC decision record — Dataspace Profile Context](https://github.com/eclipse-edc/Connector/tree/main/docs/developer/decision-records/2025-05-28-dataspace-profile-context)
-- [CFM system architecture](https://github.com/eclipse-cfm/cfm/blob/main/docs/developer/architecture/system.architecture.md)
 
 ## What this path does not cover
 

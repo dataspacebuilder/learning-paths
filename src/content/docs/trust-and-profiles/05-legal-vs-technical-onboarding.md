@@ -59,7 +59,7 @@ A typical managed-platform flow is:
 9. validate DSP, Management API, and Identity Hub endpoints;
 10. hand over endpoints, identifiers, and credentials to the participant or application team.
 
-This is the platform workflow described in [Provision Participants](../platform-setup/provisioning-participants/). The trust team defines the rules that workflow follows.
+This is the platform workflow described in [Provision Participants](../platform-setup/10-provisioning-participants/). The trust team defines the rules that workflow follows.
 
 ## The handoff between phases
 

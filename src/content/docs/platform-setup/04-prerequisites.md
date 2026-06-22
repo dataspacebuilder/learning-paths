@@ -49,7 +49,7 @@ At minimum, plan for:
 - service-to-service clients for agents and optional services;
 - key rotation and JWKS availability.
 
-Identity provider setup is covered in more detail in [Chapter 8](./identity-provider-setup/).
+Identity provider setup is covered in more detail in [Chapter 8](./08-identity-provider-setup/).
 
 ## Governance inputs needed before bootstrap
 

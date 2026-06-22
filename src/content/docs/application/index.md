@@ -73,19 +73,19 @@ By the end of this path, you will be able to:
 
 | # | Chapter | What you will learn |
 |---|---|---|
-| 1 | [What You Are Building](./what-you-are-building/) | The application roles: provider automation, consumer automation, backend integration, and data serving. |
-| 2 | [What You Receive from the Platform](./platform-handoff/) | The endpoints, credentials, identifiers, and profile information your application uses. |
-| 3 | [Application Architecture](./application-architecture/) | How the app, Management API, Identity Hub, data plane, and backend systems fit together. |
-| 4 | [Publishing Data](./publishing-data/) | Assets, data addresses, policies, and contract definitions. |
-| 5 | [Consuming Data](./consuming-data/) | Catalog requests, offer selection, contract negotiation, transfer initiation, and retrieval. |
-| 6 | [Working with the Management API](./management-api/) | JSON-LD, ODRL, resource groups, async state machines, polling, and errors. |
-| 7 | [Working with Identity Hub](./identity-hub/) | DIDs, credentials, status checks, and what stays outside application scope. |
-| 8 | [Policy Design for Applications](./policy-design/) | Common policy patterns and how application behavior should align with them. |
-| 9 | [Data Plane Architecture](./data-plane-architecture/) | Control plane vs. data plane, Data Plane Signaling, and transfer options. |
-| 10 | [Build or Deploy a Data Plane](./build-or-deploy-data-plane/) | Registering, operating, and implementing standalone data planes. |
-| 11 | [Application as Data Plane](./application-as-data-plane/) | How a domain app can implement Data Plane Signaling and serve data directly. |
-| 12 | [Deployment and Operations](./deployment-and-operations/) | Runtime configuration, token handling, retries, observability, and support boundaries. |
-| 13 | [End-to-End Example](./end-to-end-example/) | A complete TowerWorks flow from consumed certificate to published dossier and transfer. |
+| 1 | [What You Are Building](./01-what-you-are-building/) | The application roles: provider automation, consumer automation, backend integration, and data serving. |
+| 2 | [What You Receive from the Platform](./02-platform-handoff/) | The endpoints, credentials, identifiers, and profile information your application uses. |
+| 3 | [Application Architecture](./03-application-architecture/) | How the app, Management API, Identity Hub, data plane, and backend systems fit together. |
+| 4 | [Publishing Data](./04-publishing-data/) | Assets, data addresses, policies, and contract definitions. |
+| 5 | [Consuming Data](./05-consuming-data/) | Catalog requests, offer selection, contract negotiation, transfer initiation, and retrieval. |
+| 6 | [Working with the Management API](./06-management-api/) | JSON-LD, ODRL, resource groups, async state machines, polling, and errors. |
+| 7 | [Working with Identity Hub](./07-identity-hub/) | DIDs, credentials, status checks, and what stays outside application scope. |
+| 8 | [Policy Design for Applications](./08-policy-design/) | Common policy patterns and how application behavior should align with them. |
+| 9 | [Data Plane Architecture](./09-data-plane-architecture/) | Control plane vs. data plane, Data Plane Signaling, and transfer options. |
+| 10 | [Build or Deploy a Data Plane](./10-build-or-deploy-data-plane/) | Registering, operating, and implementing standalone data planes. |
+| 11 | [Application as Data Plane](./11-application-as-data-plane/) | How a domain app can implement Data Plane Signaling and serve data directly. |
+| 12 | [Deployment and Operations](./12-deployment-and-operations/) | Runtime configuration, token handling, retries, observability, and support boundaries. |
+| 13 | [End-to-End Example](./13-end-to-end-example/) | A complete TowerWorks flow from consumed certificate to published dossier and transfer. |
 
 ## What this path does not cover
 

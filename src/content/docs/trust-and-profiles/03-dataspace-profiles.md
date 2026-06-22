@@ -95,7 +95,7 @@ Participant profile
 
 That platform configuration should be downstream of the trust-design work. The trust team defines what `winddata-alliance` means. The platform team configures it.
 
-For the component model, see the [CFM system architecture](https://github.com/eclipse-cfm/cfm/blob/main/docs/developer/architecture/system.architecture.md) and the platform chapter [Dataspace Profiles and Cells](../platform-setup/dataspace-profiles-and-cells/).
+For the component model, see the [CFM system architecture](https://github.com/eclipse-cfm/cfm/blob/main/docs/developer/architecture/system.architecture.md) and the platform chapter [Dataspace Profiles and Cells](../platform-setup/09-dataspace-profiles-and-cells/).
 
 ## How this maps to EDC protocol contexts
 

@@ -19,24 +19,16 @@ One organization can fill more than one role. Keep the roles separate anyway. It
 | Verifier | Evaluates presented credentials against policy. | GreenSteel verifies TowerWorks before negotiating access. |
 | Credential issuer | Issues verifiable credentials after checking evidence. | WindData issuer for membership; accreditation body for lab status. |
 | Registration or onboarding service | Collects applications, evidence, approvals, and onboarding state. | WindData onboarding portal or delegated onboarding provider. |
-| Platform operator | Runs Control Plane, Identity Hub, CFM, data-plane capability, issuer integrations, and observability. | A managed platform team operating participant contexts. |
-| Application team | Builds software that applies approved policies and reacts to credential state. | TowerWorks Evidence Bridge team. |
+| Platform operator | Runs the services that make participants, credentials, policies, and monitoring usable. | A managed platform team operating participant contexts. |
+| Application team | Builds software that applies approved policies and reacts to credential state. | A participant application team. |
 
-The [IDSA Rulebook roles chapter](https://github.com/International-Data-Spaces-Association/IDSA-Rulebook/blob/main/documentation/005_Roles.md) and [Dataspace Builder roles concept](https://dataspacebuilder.github.io/website/docs/concepts/roles-and-participation) explain the broader model. This chapter focuses on the handoffs you need for the learning paths.
+The [IDSA Rulebook roles chapter](https://github.com/International-Data-Spaces-Association/IDSA-Rulebook/blob/main/documentation/005_Roles.md) explains the broader model. This chapter focuses on the handoffs you need for this learning path.
 
 ## Dataspace authority
 
 The dataspace authority is the owner of the rules. In IDSA terminology this is often called the Dataspace Governance Authority. In this path, we use **dataspace authority** for readability.
 
-It defines:
-
-- who may join;
-- which agreements or evidence are required;
-- which credential types exist;
-- which issuers are accepted;
-- which policies and vocabularies providers should use;
-- which protocol versions and identity mechanisms are part of the profile;
-- how suspension, revocation, renewal, and offboarding work.
+It defines who may join, which agreements or evidence are required, which credential types exist, which issuers are accepted, which policy patterns providers should use, and how renewal, revocation, and offboarding work.
 
 It does not have to operate every service itself. A platform operator can run services on its behalf. An external issuer can issue a credential it accepts. Participants still make local policy decisions for their own assets.
 
@@ -51,82 +43,48 @@ For WindData Alliance, examples are:
 | `WindDataMembershipCredential` | WindData Alliance or delegated onboarding provider | The holder is an active member. |
 | `AccreditedLabCredential` | Independent lab accreditation body | The holder may issue official test evidence. |
 | `TurbineManufacturerCredential` | WindData Alliance or industry registry | The holder acts as a recognized turbine manufacturer. |
-| `CarbonReportingCredential` | Sustainability reporting authority | The holder meets a reporting or audit requirement. |
 
-The issuer is trusted because of the rules and checks behind issuance, not because it runs a special runtime service.
+The issuer is trusted because of the rules and checks behind issuance, not because it runs a special technical service.
 
 ## Holder and verifier
 
-A holder stores credentials and presents them when another participant needs proof.
+A holder stores credentials and presents them when another participant needs proof. A verifier checks whether that proof satisfies the policy.
 
-A verifier checks:
-
-- the credential type;
-- the holder binding;
-- the issuer signature;
-- the issuer's trust status;
-- validity period;
-- revocation or suspension status;
-- relevant claims;
-- whether the claims satisfy the policy.
-
-In the runtime architecture, Identity Hub or equivalent credential services help holders assemble presentations and help verifiers check them. Application teams usually do not implement the credential protocol directly, but they need to understand the resulting business state.
+For governance readers, the important point is the relationship. TowerWorks may hold a membership credential. GreenSteel may verify that credential before allowing negotiation. The trust model should make it clear which credentials are meaningful, which issuers are accepted, and which policies depend on the result.
 
 ## Registration service
 
 The registration or onboarding service handles the business workflow before technical activation.
 
-It may:
-
-- collect organization data;
-- collect evidence documents;
-- present terms and agreements;
-- route applications for review;
-- call an issuer after approval;
-- trigger technical provisioning after approval;
-- show onboarding status to applicants.
+It may collect organization data, gather evidence, present terms, route applications for review, call an issuer after approval, trigger technical provisioning, and show onboarding status to applicants.
 
 Do not confuse this with the platform's Identity Provider. A registration service evaluates membership criteria. An IDP issues API tokens for platform APIs.
 
 ## Platform operator
 
-The platform operator turns trust decisions into usable runtime configuration.
+The platform operator turns trust decisions into usable platform behavior.
 
-Typical responsibilities include:
+Typical responsibilities include deploying and operating the platform services, configuring approved profiles, integrating with issuers, protecting keys and secrets, handing over participant information, and monitoring provisioning and credential workflows.
 
-- deploying Control Plane and Identity Hub;
-- configuring CFM cells and dataspace profiles;
-- integrating with one or more issuers;
-- storing secrets and keys securely;
-- exposing the correct participant endpoints;
-- handing over profile names, DIDs, credentials, and API access;
-- monitoring credential issuance and provisioning workflows.
-
-The operator should not silently invent membership rules or credential schemas. Those are governance inputs.
+The operator should not silently invent membership rules or credential definitions. Those are governance inputs.
 
 ## Application team
 
-Application teams consume the trust model.
+Application teams consume the trust model when they build participant-facing software.
 
-TowerWorks Evidence Bridge should know:
+A participant application should know which policy patterns are approved for the data products it publishes or consumes, which credential requirements explain access failures, which human approvals are needed before accepting obligations, and where to send users when a credential is missing or expired.
 
-- which policy templates are approved for tower-section dossiers;
-- which credential requirements explain catalog or negotiation failures;
-- which human approvals are needed before accepting obligations;
-- which credential status changes should block publication or transfer;
-- where to send users when a credential is missing or expired.
-
-The application team should not create its own alternative membership credential just because a feature needs one. If a new claim is needed, feed that requirement back into the trust-design process.
+The application team should not create its own alternative membership credential just because a feature needs one. If new proof is needed, feed that requirement back into the trust-design process.
 
 ## Responsibility split
 
 | Decision | Primary owner | Used by |
 |---|---|---|
 | Membership rules | Dataspace authority | Registration service, issuer, platform operator. |
-| Credential schema | Dataspace authority and issuer | Issuer Service, Identity Hub, policy templates, applications. |
-| Trust anchor list | Dataspace authority | Control Plane, Identity Hub, operator configuration. |
+| Credential definition | Dataspace authority and issuer | Issuer, policy templates, applications. |
+| Accepted issuer scope | Dataspace authority | Operator configuration, policy evaluation, support. |
 | Participant provisioning | Platform operator | Applications and participants. |
-| Asset-specific policy choice | Data provider | Application, Control Plane, consumer. |
+| Asset-specific policy choice | Data provider | Application and consumer. |
 | Obligation compliance | Consumer organization | Consuming application, audit, legal process. |
 | Revocation decision | Issuer or dataspace authority | Verifiers, providers, platform support. |
 

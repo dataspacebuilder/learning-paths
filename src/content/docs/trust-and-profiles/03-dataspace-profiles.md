@@ -1,165 +1,76 @@
 ---
-title: "Chapter 3: Dataspace Profiles"
-description: "How a profile turns governance choices into platform, protocol, credential, and policy configuration."
+title: "Chapter 3: Define the Dataspace Profile"
+description: "How governance teams define the shared baseline rules for a dataspace."
 ---
 
-A dataspace profile is the bridge between governance and runtime behavior.
+A dataspace profile is the named rule set for one dataspace community. It gives participants a shared answer to a basic question:
 
-It says: for this dataspace, these are the protocol expectations, credential requirements, trusted issuers, policy vocabularies, onboarding rules, and operational constraints that participants must follow.
+> Who belongs to this dataspace, and what proof shows that they belong?
 
-In the platform path, a profile is configured so CFM and the connector services can provision participants correctly. In this trust path, the profile is designed before it becomes configuration.
+A first profile should be simple. It does not need to describe every future role, approval, and exception. It should define the baseline that every participant and provider can rely on.
 
-## What a profile contains
+A platform can later turn parts of the profile into configuration. In governance terms, the profile comes first. It gives the same meaning to the authority, participants, issuers, operators, and application teams before anyone configures a connector or deploys a participant.
 
-A practical profile includes at least these decisions:
+For WindData Alliance, the first profile should answer:
 
-| Area | Example decision for WindData Alliance |
-|---|---|
-| Profile identifier | `winddata-alliance` |
-| Protocols | DSP profile and version accepted for participant interactions. |
-| Credential protocol | DCP expectations for credential presentation and verification. |
-| Identity model | Accepted DID methods, DID document requirements, key rotation expectations. |
-| Required credentials | Membership credential required for ordinary participation. |
-| Optional credentials | Lab accreditation, manufacturer role, analytics provider, project-specific access. |
-| Trusted issuers | WindData issuer for membership; external accreditation body for lab credentials. |
-| Credential schemas | Claim names, value formats, validity periods, status mechanisms, versioning. |
-| Policy vocabulary | Names and meanings for constraints used in access and contract policies. |
-| Onboarding rules | Evidence required, approval states, technical provisioning trigger. |
-| Revocation rules | Who can suspend or revoke credentials and how quickly verifiers must react. |
-| Data-plane expectations | Allowed transfer types or security requirements, if the dataspace mandates them. |
+> What must be true before approved organizations can exchange offshore wind product-passport evidence as members of the same dataspace?
 
-Do not treat the profile as only a YAML file. The file is one representation. The profile is the set of decisions behind it.
+## The Membership Baseline
 
-## Four views of the same profile
+The first useful WindData Alliance profile is a membership profile.
 
-Different teams see the profile through different lenses.
+It names the dataspace, explains the purpose, defines who may participate, and describes the proof of membership. It also says who may issue that proof, when an approved organization becomes active, and what happens when membership proof is no longer valid.
 
-| View | What it means |
-|---|---|
-| Governance view | The rules and expectations the dataspace authority approves. |
-| Platform view | CFM, Control Plane, Identity Hub, issuer, and data-plane configuration. |
-| Application view | The policy templates, credential names, endpoints, and error explanations the app uses. |
-| Participant view | The requirements an organization must meet to join and remain active. |
+That is enough to make the first trust decision consistent. GreenSteel, TowerWorks, SafeLoad, NorthSea Wind, and GridSight can all understand what it means to be an active WindData member. Providers can then use a simple member-only policy pattern without keeping their own private membership lists.
 
-All four views must refer to the same profile. If governance says `WindDataMembershipCredential`, the issuer, policy templates, and application messages should use the same meaning.
+More specific proof can be added as the dataspace matures. Lab accreditation, manufacturer approval, analytics approval, and program-specific access are useful later, but the first profile is clearer if it establishes membership first.
 
-## Profile example
+## Profile Brief
 
-A compact first version for WindData Alliance might look like this:
+A profile brief is a short design artifact that a governance group can review before the platform team translates it into settings.
 
-```text
-profile: winddata-alliance
-purpose: offshore wind product-passport evidence exchange
-technical profile:
-  protocol profile: dataspace-protocol-http:2025-1
-  credential exchange: DCP-compatible credential presentation
-  accepted DID methods: did:web
-  policy language: ODRL profile used by WindData policy templates
-trust profile:
-  required credentials:
-    - WindDataMembershipCredential v1
-  optional credentials:
-    - AccreditedLabCredential v1
-    - TurbineManufacturerCredential v1
-    - AnalyticsProviderCredential v1
-  trusted issuers:
-    - WindData Alliance membership issuer
-    - recognized lab accreditation issuer
-onboarding:
-  legal approval required before technical provisioning
-  membership credential issued after approval
-lifecycle:
-  membership validity: 12 months
-  suspension blocks future negotiation
-  revoked credentials must fail future policy checks
-```
+> **Profile:** WindData Alliance member profile
+>
+> **ID:** `winddata-alliance:v1`
+>
+> **Purpose:** let approved members exchange offshore wind product-passport evidence under one shared membership rule.
+>
+> **Participant scope:** organizations approved by WindData Alliance.
+>
+> **Membership proof:** active `WindDataMembershipCredential`.
+>
+> **Issuer:** WindData Alliance membership issuer.
+>
+> **Onboarding rule:** business approval happens before technical activation.
+>
+> **Policy pattern:** member-only access.
+>
+> **Lifecycle rule:** expired or revoked membership credentials must not satisfy future access decisions.
+>
+> **Provider boundary:** providers choose which offers use the member-only pattern.
+>
+> **Implementation references:** CFM [Tenant Manager profile model](https://github.com/eclipse-cfm/cfm/blob/main/tmanager/model/v1alpha1/model.go), CFM [system architecture](https://github.com/eclipse-cfm/cfm/blob/main/docs/developer/architecture/system.architecture.md), and EDC [Dataspace Profile Context](https://github.com/eclipse-edc/Connector/tree/main/docs/developer/decision-records/2025-05-28-dataspace-profile-context).
 
-This is illustrative, not a normative format. Use the actual configuration format required by your platform and component versions.
+This brief is not a configuration file. It helps the trust team agree on meaning before operators translate the decisions into platform-specific settings.
 
-## How this maps to CFM
+## Shared Rules and Provider Choices
 
-CFM's architecture models tenants, participant profiles, identifiers, dataspace profiles, virtual participant agents, and cells. A participant profile binds an organization to an identifier, one or more dataspace profiles, and the deployment context where the participant runs.
+The profile should contain the rules that need to mean the same thing across the dataspace. Membership is one of those rules. If one provider treats a WindData member differently from another provider, participants will not know what membership actually means.
 
-In practical terms:
-
-```text
-Tenant: TowerWorks Fabrication
-        │
-        ▼
-Participant profile
-  ├─ identifier: did:web:ih.platform.example:towerworks
-  ├─ dataspace profile: winddata-alliance
-  ├─ cell: eu-west-managed
-  └─ provisioned runtime contexts
-```
-
-That platform configuration should be downstream of the trust-design work. The trust team defines what `winddata-alliance` means. The platform team configures it.
-
-For the component model, see the [CFM system architecture](https://github.com/eclipse-cfm/cfm/blob/main/docs/developer/architecture/system.architecture.md) and the platform chapter [Dataspace Profiles and Cells](../platform-setup/09-dataspace-profiles-and-cells/).
-
-## How this maps to EDC protocol contexts
-
-EDC's **Dataspace Profile Context** decision record introduces a runtime concept for serving multiple dataspaces with different combinations of protocol version, authentication, vocabulary, policy functions, scopes, and identifier resolution.
-
-The important design implication is this:
-
-> If two dataspaces require different protocol, vocabulary, authentication, or policy behavior, model them as separate profile contexts rather than hiding differences in ad hoc application code.
-
-A profile context can be represented by a distinct protocol endpoint and advertised to peers. The [EDC decision record on Dataspace Profile Context](https://github.com/eclipse-edc/Connector/tree/main/docs/developer/decision-records/2025-05-28-dataspace-profile-context) is the authoritative reference for that implementation direction.
-
-## Profile boundaries
-
-Profiles should be explicit about what is mandatory and what is optional.
-
-| Category | Recommended treatment |
-|---|---|
-| Must-have interoperability rules | Put them in the profile. Participants need them to interact. |
-| Optional convenience services | Reference them, but do not make them mandatory unless governance requires them. |
-| Provider-specific restrictions | Let providers add stricter asset policies. Do not hard-code every provider rule into the dataspace profile. |
-| Experimental features | Put them in a sandbox or versioned draft profile. |
-| Legal templates | Reference the approved legal process, but do not bury legal interpretation in connector configuration. |
-
-A profile that is too vague cannot be implemented. A profile that is too broad becomes impossible to evolve.
+Provider choices still matter. GreenSteel can decide which of its own offers are member-only. SafeLoad can decide which evidence it publishes. The profile gives those providers a shared membership rule to rely on; it does not force every provider to expose every asset under the same conditions.
 
 ## Version the profile
 
-Profiles change. WindData Alliance might start with member-only document access and later add project-specific credentials, new policy operands, or a new DSP version.
+Profiles change as the dataspace matures. WindData Alliance might begin with member-only access and later add lab accreditation, manufacturer roles, analytics approval, or program-specific access.
 
-Use explicit profile versions or compatibility statements:
+Use clear profile versions or compatibility statements. A version does not need to expose every technical detail, but it should tell participants what has changed, who is affected, whether old membership credentials remain accepted, and when migration is required.
 
-```text
-winddata-alliance:v1
-  DSP: 2025-1
-  credentials: membership v1, lab-accreditation v1
-  policy templates: member.use.v1, lab.report.publish.v1
+For example, `winddata-alliance:v2` might add program access credentials while still accepting existing membership credentials from `v1`. That kind of statement gives operators and participants enough time to prepare.
 
-winddata-alliance:v2
-  adds: product-program credential
-  changes: manufacturer access policy template
-  migration: v1 credentials accepted until 2027-01-01
-```
+## Handoff to implementation teams
 
-The versioning rule should say:
+The platform team needs the profile ID, the participant scope, the membership credential specification, the membership issuer, the member-only policy pattern, onboarding state, lifecycle rule, and versioning rule.
 
-- which participants must upgrade;
-- whether old credentials remain valid;
-- whether old policy templates remain negotiable;
-- how applications should identify incompatible offers;
-- how sandbox testing happens before production change.
+Application teams need the same meaning in user-facing language. A failed access attempt should be explainable as a missing, expired, revoked, or not-yet-issued membership credential.
 
-## Design checklist
-
-Before the platform team configures a profile, the trust team should be able to answer:
-
-1. What is the profile name and scope?
-2. Which protocol versions and identity mechanisms are required?
-3. Which credential types are required at onboarding?
-4. Which credential types are optional but policy-relevant?
-5. Which issuers are trusted for each credential type?
-6. Which claims and vocabularies are stable enough for policy templates?
-7. Which onboarding states exist before provisioning?
-8. What revocation and suspension behavior is expected?
-9. How will profile changes be versioned and communicated?
-10. How will participants test conformance before production use?
-
-If these answers are not ready, create a sandbox profile first. Do not pretend a production trust framework exists just because the technical platform can provision participants.
+By now, you should have a first dataspace profile that a governance group can approve and that an operator can translate without inventing missing membership rules.

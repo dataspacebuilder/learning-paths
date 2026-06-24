@@ -1,221 +1,48 @@
 ---
-title: "Chapter 7: Credential Lifecycle"
-description: "How credentials are issued, stored, presented, renewed, suspended, revoked, and retired."
+title: "Chapter 6: Manage Credential Lifecycle"
+description: "How governance teams decide when trust starts, changes, and ends."
 ---
 
-A credential is not a one-time onboarding artifact. It has a lifecycle.
+A credential is not a permanent badge. It is a statement made at a point in time, under a profile, by an accepted issuer.
 
-If the lifecycle is missing, participants will eventually rely on stale membership, expired accreditation, or credentials that should have been suspended. That undermines the trust model.
+Trust in a dataspace is time-bound. A credential lifecycle makes that practical: it says when proof becomes valid, how long it remains useful, when it must be renewed, and when it must stop satisfying future access decisions.
 
-## Lifecycle overview
+## Define the lifecycle rule
 
-A practical lifecycle has these stages:
+For each credential type, the governance team should answer a small set of questions:
 
-```text
-approved evidence
-      │
-      ▼
-issuance
-      │
-      ▼
-storage in holder identity infrastructure
-      │
-      ▼
-presentation during catalog or negotiation
-      │
-      ▼
-verification by another participant
-      │
-      ├─ renewal before expiry
-      ├─ suspension if temporarily invalid
-      ├─ revocation if no longer valid
-      └─ retirement at offboarding or schema migration
-```
+- When can it be issued?
+- How long is it valid?
+- What keeps it current?
+- When must it be revoked or retired?
+- Which conditions still count as acceptable proof?
 
-The dataspace profile should define what happens at each stage for every important credential type.
+For WindData Alliance, a membership credential may be valid for one year. A lab accreditation credential should not outlive the accreditation behind it. A program access credential should usually end with the program or contract relationship.
 
-## Issuance
+## Keep proof current
 
-Issuance creates the credential after the required evidence has been approved.
+Participants present credentials when they need to prove something to another participant. The verifier checks whether the proof still satisfies the policy: accepted issuer, accepted credential type, right profile, accepted conditions, and validity period.
 
-For WindData Alliance:
+Renewal keeps old assumptions from staying active forever. It gives the participant a regular moment to show that membership, accreditation, approval, or program participation still holds.
 
-- TowerWorks is approved as a member;
-- the onboarding record references the approved evidence;
-- the issuer receives an issuance request;
-- the credential is signed for TowerWorks' DID;
-- the credential status entry is created;
-- the credential is delivered to TowerWorks' Identity Hub.
+## End acceptance
 
-Issuance should be traceable. A support team should be able to answer:
+Revocation means the credential should no longer satisfy future trust decisions.
 
-- which credential was issued;
-- to which holder;
-- by which issuer;
-- under which profile;
-- based on which approval record;
-- with which validity period;
-- with which status reference.
+Reasons include withdrawn accreditation, false evidence, compromised credentials, policy violations, inability to re-validate important claims, or replacement by a new credential. Revocation changes future access. It does not automatically erase data already transferred under a valid agreement; retention, deletion, and downstream use still need legal and application controls.
 
-## Storage
+## Close the loop
 
-The holder stores credentials in its identity infrastructure, such as Identity Hub.
+Offboarding is the business process for ending participation in a profile or dataspace. It should lead to the right credential action, usually revocation or retirement, and also cover platform access, participant records, subscriptions, audit retention, and open agreements.
 
-The application path explains what application developers need to know in [Working with Identity Hub](../application/07-identity-hub/). Trust designers need to define what credentials should be available and how they are expected to be presented.
+Do not treat offboarding as only deleting a technical account. It is a coordinated trust, platform, and contractual process. A participant may leave WindData Alliance while some past obligations continue to matter.
 
-Do not make domain applications store raw credentials unless there is a strong reason. Let identity infrastructure handle credential storage and presentation.
+## Handoff to operators and applications
 
-## Presentation
+Operators need lifecycle rules for each credential type: when to issue, renew, revoke, and retire. Applications need clear user-facing explanations for common failures such as missing, expired, revoked, or unsupported credentials.
 
-Presentation happens when a participant needs to prove claims to another participant.
+Do not expose sensitive internal details to counterparties, but give legitimate participants enough information to fix onboarding or renewal problems.
 
-Examples:
+For the deeper trust model, including re-evaluation, expiry, revocation, and trust withdrawal, see the [IDSA Rulebook trust chapter](https://github.com/International-Data-Spaces-Association/IDSA-Rulebook/blob/main/documentation/008_Trust.md).
 
-| Interaction | Credential need |
-|---|---|
-| TowerWorks asks GreenSteel for the `GS-87` catalog offer. | Active membership credential. |
-| SafeLoad publishes an official weld and fatigue report. | Membership credential and lab accreditation credential. |
-| NorthSea Wind negotiates the full `TS-42` dossier. | Membership credential and manufacturer or program access credential. |
-| GridSight requests analytics summary data. | Membership credential and analytics provider credential. |
-
-The profile should define which credentials may be requested and how much information should be disclosed.
-
-## Verification
-
-The verifier checks whether the presented credential satisfies policy.
-
-Typical checks include:
-
-- holder binding matches the presenting participant;
-- issuer signature is valid;
-- issuer is trusted for this credential type;
-- credential type and schema version are accepted;
-- required claims are present;
-- values match policy constraints;
-- validity period covers the interaction;
-- credential is not revoked or suspended;
-- presentation is fresh enough for the risk class.
-
-Verification is part of the control-plane trust decision. The data plane should not invent separate trust logic for the same decision.
-
-## Renewal
-
-Credentials should have validity periods. Renewal makes participants periodically prove that assumptions still hold.
-
-Define renewal rules per credential type.
-
-| Credential | Example validity | Renewal trigger |
-|---|---|---|
-| Membership | 12 months | Agreement renewal or annual review. |
-| Lab accreditation | Until external accreditation expires | New accreditation evidence. |
-| Program access | Program duration or shorter | Program owner approval. |
-| Analytics provider | 6 months in pilot | Review of data-use obligations. |
-
-Notify participants before expiration. A credential that expires silently will look like a technical failure to applications and users.
-
-## Suspension
-
-Suspension is temporary. The credential may become valid again after a condition is resolved.
-
-Examples:
-
-- GridSight's analytics approval is paused during a compliance review;
-- TowerWorks has not completed an annual renewal step;
-- an issuer key rotation requires temporary status review;
-- a participant is under investigation but not permanently removed.
-
-Define what suspension blocks:
-
-| Scope | Possible behavior |
-|---|---|
-| Catalog visibility | Offers requiring the suspended credential are hidden. |
-| Contract negotiation | New negotiations fail. |
-| Transfer start | New transfers fail even if an agreement exists. |
-| Existing agreements | Continue, pause, or terminate depending on policy and contract terms. |
-
-Do not assume every suspension should terminate existing transfers. That decision depends on risk, policy, and legal commitments.
-
-## Revocation
-
-Revocation means the credential should no longer be accepted.
-
-Reasons include:
-
-- participant leaves the dataspace;
-- accreditation is withdrawn;
-- evidence was false;
-- legal entity is no longer eligible;
-- credential was compromised;
-- a replacement credential supersedes it.
-
-Revocation should affect future trust decisions. It does not automatically erase data already transferred under a valid agreement. Retention, deletion, and downstream usage obligations need legal and application controls.
-
-The use case chapter [Trust Changes](../use-case/10-trust-changes/) illustrates this distinction in story form.
-
-## Offboarding
-
-Offboarding ends participation in a profile or dataspace.
-
-A complete offboarding plan should cover:
-
-- revoking or letting membership credentials expire;
-- suspending platform API access;
-- disabling or archiving participant contexts;
-- ending subscriptions or notification flows;
-- rotating secrets where needed;
-- preserving audit records according to policy;
-- handling existing agreements and retention obligations;
-- communicating status to counterparties if the profile requires it.
-
-Offboarding is not only deleting a tenant record. It is a coordinated trust, platform, and contractual process.
-
-## Status and revocation checks
-
-The profile should define how verifiers check credential status.
-
-Important decisions:
-
-1. Which status mechanism is used?
-2. How quickly must revocation be visible?
-3. Can verifiers use cached status?
-4. How long can a cached check remain valid?
-5. What happens when status cannot be checked?
-6. Which data classes require stricter checks?
-
-For low-risk data, periodic status checks may be enough. For high-risk or regulated data, the profile may require fresh status verification before transfer.
-
-## Support signals
-
-Applications and operators need actionable errors.
-
-Prefer explanations like:
-
-| Signal | Meaning |
-|---|---|
-| `missing credential: WindDataMembershipCredential` | The holder does not have the required membership proof. |
-| `untrusted issuer` | The credential issuer is not trusted for this profile or type. |
-| `expired credential` | The credential validity period ended. |
-| `suspended credential` | The issuer or authority temporarily disabled it. |
-| `revoked credential` | The credential must not be accepted. |
-| `unsupported credential version` | The holder must renew or migrate to an accepted schema. |
-
-Do not expose sensitive internal details to counterparties, but give enough information for legitimate participants to fix onboarding or renewal problems.
-
-## Lifecycle checklist
-
-For each credential type, define:
-
-1. issuance prerequisites;
-2. holder binding rules;
-3. storage and delivery expectations;
-4. presentation contexts;
-5. verification checks;
-6. validity period;
-7. renewal workflow;
-8. suspension triggers;
-9. revocation triggers;
-10. offboarding behavior;
-11. status-check requirements;
-12. support and audit messages.
-
-A credential without lifecycle rules is not a reliable trust instrument. It is just a signed snapshot.
+By now, you should know how each important credential becomes valid, how it stays current, and how it stops being accepted.

@@ -1,215 +1,84 @@
 ---
-title: "Chapter 4: Credential Types and Schemas"
-description: "How to define credential families, claims, validity, status, and versioning without over-collecting data."
+title: "Chapter 4: Design the Membership Credential"
+description: "How governance teams define the first credential and the trust anchor for membership proof."
 ---
 
-Credentials are the evidence that policy decisions use.
+The dataspace profile says that WindData Alliance members need proof of active membership. This chapter turns that profile rule into a credential design.
 
-A credential should say one clear thing about a participant, role, capability, compliance state, relationship, or asset. It should be issued by an appropriate issuer, have a defined validity period, and contain only the claims needed for the dataspace purpose.
+The first credential should stay narrow. It should prove membership, not every future role, approval, project, or exception. The goal is to give providers enough reliable proof to apply the member-only policy pattern without creating a complete identity dossier.
 
-The goal is not to create a huge identity dossier. The goal is to provide reliable, minimal, verifiable claims.
+Trust is situational, time-bound, and purpose-specific. A credential is evidence for a trust decision. It is not the trust decision by itself. The [IDSA Rulebook trust chapter](https://github.com/International-Data-Spaces-Association/IDSA-Rulebook/blob/main/documentation/008_Trust.md) gives the deeper treatment.
 
-## Start with the credential catalog
+## From profile decision to credential
 
-Before writing schemas, create a catalog of credential types.
+The profile decision is:
 
-For WindData Alliance, an initial catalog could be:
+> Approved WindData Alliance members can use the member-only access pattern.
 
-| Credential type | Purpose | Typical holder | Possible issuer |
-|---|---|---|---|
-| `WindDataMembershipCredential` | Proves active membership in the dataspace. | Every active participant. | WindData Alliance issuer. |
-| `SupplierRoleCredential` | Proves the holder acts as an upstream supplier. | GreenSteel and similar providers. | WindData Alliance or accepted industry registry. |
-| `TowerFabricatorCredential` | Proves the holder fabricates tower sections. | TowerWorks. | WindData Alliance or industry authority. |
-| `AccreditedLabCredential` | Proves the holder is allowed to publish official test evidence. | SafeLoad Labs. | External accreditation issuer. |
-| `TurbineManufacturerCredential` | Proves the holder is an approved turbine manufacturer. | NorthSea Wind. | WindData Alliance or manufacturer registry. |
-| `AnalyticsProviderCredential` | Proves the holder may receive analytics-oriented summaries. | GridSight. | WindData Alliance. |
-| `ProgramAccessCredential` | Proves access to a specific product, project, or program. | Selected suppliers and manufacturers. | Program owner or delegated issuer. |
+The credential design answers the next question:
 
-Do not create all possible credentials on day one. Create the credentials needed for the first sharing policies, then add more as real access rules require them.
+> What proof can a participant present so another participant can verify active membership?
 
-## Credential families
+For the first profile, that proof is `WindDataMembershipCredential`. It should tell a verifier that the holder is an approved WindData Alliance member, that the membership is currently active, and that the credential was issued by the accepted membership issuer.
 
-Most dataspaces need several families of credentials.
+Do not add additional credential types until a real policy needs them. The first chapter on profiles established the membership baseline; this chapter makes that baseline verifiable.
 
-### Membership credentials
+## Issuer and Accepted Proof
 
-Membership credentials answer:
+For a credential to be useful, participants need to know who issued it and whether that issuer is accepted for this kind of proof.
 
-> Is this participant an active member of the dataspace?
+When an issuer is accepted as authoritative for a specific credential type, it acts as a **trust anchor** for that proof. This is scoped. The same issuer may be accepted for membership proof, but not for other kinds of proof.
 
-They are usually the first credential issued after onboarding. Many access policies depend on them.
-
-Common claims:
-
-- holder identifier;
-- dataspace membership identifier;
-- membership status;
-- membership level, if levels exist;
-- valid-from and valid-until dates;
-- issuer identifier;
-- status or revocation reference.
-
-### Role credentials
-
-Role credentials answer:
-
-> What role is this participant allowed to play in this dataspace?
-
-Examples include supplier, manufacturer, accredited lab, service partner, analytics provider, auditor, or maintenance provider.
-
-Role credentials should not be vague. A generic `trustedPartner=true` claim is hard to evaluate later. Prefer claims that match policy and business meaning.
-
-### Compliance and certification credentials
-
-Compliance credentials answer:
-
-> Does this participant meet a specific external or internal requirement?
-
-Examples include security certifications, jurisdictional attestations, sustainability reporting capability, or lab accreditation.
-
-These often come from external issuers. The dataspace authority decides whether to accept them and for which policies.
-
-### Domain-specific credentials
-
-Domain credentials answer:
-
-> Does this participant have access to a specific product line, project, asset class, or evidence flow?
-
-For WindData Alliance:
-
-- a `ProgramAccessCredential` could permit access to `NSW-15` product-passport evidence;
-- a `TowerSectionEvidencePublisherCredential` could permit publishing tower-section dossiers;
-- a `CarbonIntensityDataConsumerCredential` could permit analytics providers to consume summary carbon data.
-
-Use these when ordinary membership is too broad.
-
-### Technical capability credentials
-
-Some dataspaces may use credentials to express technical capabilities:
-
-- conformance test passed;
-- supported protocol profile;
-- security baseline met;
-- data-plane capability certified.
-
-Use them carefully. Some technical capabilities are better represented by runtime registration, health checks, or conformance evidence than by long-lived credentials.
-
-## Schema design principles
-
-A schema defines the structure of a credential type. Good schemas are boring in the best way: stable, clear, minimal, and easy to evaluate.
-
-| Principle | Why it matters |
+| Question | WindData answer |
 |---|---|
-| Use stable names | Policy templates depend on consistent claim names. |
-| Minimize claims | Do not expose data that policies do not need. |
-| Define value formats | Avoid one issuer using `active` while another uses `ACTIVE_MEMBER`. |
-| Include validity | Credentials should not imply permanent trust. |
-| Include status support | Suspension and revocation need a technical hook. |
-| Bind to the holder | A credential must be presented by the participant it was issued to. |
-| Version schemas | Changes should not break existing policies without a migration plan. |
-| Document issuer authority | A credential type is only meaningful if the issuer is trusted for that type. |
+| Who creates the credential? | WindData Alliance membership issuer. |
+| What is the credential accepted for? | Proving active membership in `winddata-alliance:v1`. |
+| What is the trust anchor? | The accepted WindData membership issuer, for membership proof only. |
+| Who relies on it? | Providers applying member-only policies. |
 
-The [IDSA Rulebook chapter on attributes and claims](https://github.com/International-Data-Spaces-Association/IDSA-Rulebook/blob/main/documentation/104_Attributes_and_claims.md) is the deeper reference for claims. The [Decentralized Identity concept](https://dataspacebuilder.github.io/website/docs/concepts/decentralized-identity) explains DIDs and verifiable credentials at a conceptual level.
+Accepting a trust anchor is a governance choice. It does not give that issuer structural control over the dataspace, and it does not make the participant trusted for every interaction.
 
-## Example schema sketch
+In this chapter, the practical rule is simple: document the issuer, the trust anchor, and the purpose for which its credential is accepted. For WindData Alliance, the membership issuer is the trust anchor for membership proof. It is not automatically the trust anchor for lab accreditation, program access, or any future role.
 
-A first membership credential can be simple.
+## Keep the credential narrow
 
-```text
-credential type: WindDataMembershipCredential
-version: 1
-issuer: WindData Alliance membership issuer
-holder: participant DID
-claims:
-  memberOf: winddata-alliance
-  membershipStatus: active | suspended
-  membershipClass: standard | operator | observer
-  organizationId: governance-approved organization identifier
-  validFrom: date-time
-  validUntil: date-time
-status:
-  revocation or suspension status reference
-privacy:
-  do not include onboarding documents or commercial details
-```
+Do not put every useful value into one membership credential. A large credential reveals more than most policies need, makes changes risky, and makes it difficult to revoke one attribute without disturbing everything else.
 
-This sketch is not a required JSON-LD format. It is a design artifact. The issuer and platform team then translate it into the concrete schema and credential definition supported by the selected issuer technology.
+Keep the membership credential focused on membership. It should not become the place where every future role, approval, project, or exception is stored.
 
-## Claim vocabulary
+Later, WindData Alliance may add more targeted credentials for specific policy needs. When it does, each new credential should have its own business question, issuer, trust anchor, accepted purpose, and lifecycle rule.
 
-Credential schemas and policy templates share a vocabulary. If the policy says `memberOf = winddata-alliance`, the credential must expose a compatible claim.
+## Define the credential
 
-Create a small vocabulary table:
+Governance teams do not need to write the final technical definition, but they do need to define the meaning. For the membership credential, describe the holder, issuer, trust anchor, accepted purpose, validity period, revocation behavior, and the few values that policies need.
 
-| Claim | Meaning | Allowed values | Used by |
-|---|---|---|---|
-| `memberOf` | Dataspace or community the credential relates to. | `winddata-alliance` | Member-only policies. |
-| `membershipStatus` | Current membership state. | `active`, `suspended` | Access and contract policies. |
-| `role` | Role recognized by the profile. | `supplier`, `fabricator`, `lab`, `manufacturer`, `analytics-provider` | Role-based policies. |
-| `programId` | Product program or project. | Profile-defined identifiers such as `NSW-15` | Project-specific access. |
-| `accreditationScope` | Scope of an accreditation. | Profile-defined lab scopes | Evidence-publication policies. |
-
-Keep this vocabulary in the profile documentation. Application teams need it for user messages and policy selection. Platform teams need it for policy templates. Issuers need it for credential definitions.
-
-## Avoid overloaded credentials
-
-Do not put every possible claim into one membership credential.
-
-A large credential creates problems:
-
-- it reveals more than a policy needs;
-- it becomes hard to renew or revoke only one attribute;
-- every schema change becomes risky;
-- different issuers cannot easily own different claims;
-- policies become unclear.
-
-Prefer several targeted credentials:
+A simple design might say:
 
 ```text
-WindDataMembershipCredential
-AccreditedLabCredential
-ProgramAccessCredential
-AnalyticsProviderCredential
+Credential: WindDataMembershipCredential
+Meaning: the holder is an active member of WindData Alliance
+Issuer: WindData Alliance membership issuer
+Trust anchor: WindData Alliance membership issuer, for membership proof only
+Accepted purpose: membership proof for winddata-alliance:v1
+Holder: approved participant organization
+Validity: 12 months
+Acceptance: active until it expires or is revoked
+Used by: member-only access and negotiation policies
+Privacy rule: do not include onboarding documents or commercial details
 ```
 
-A provider policy can require one or more of them. That keeps the model composable.
+This is enough for governance review. Issuers and operators can translate it into the concrete credential format supported by the chosen technology.
 
-## Versioning and migration
+## Version the credential deliberately
 
-Schemas change as the dataspace matures.
+Credential definitions change as the dataspace matures. A pilot membership credential might later add a clearer validity rule, a membership class, or a different status model.
 
-For each credential type, define:
+Never change the meaning silently. If an old credential remains accepted, say for how long. If a new version is required, explain who must renew it and which policy patterns are affected.
 
-- current version;
-- accepted previous versions;
-- migration deadline;
-- claim compatibility rules;
-- issuer migration responsibility;
-- policy-template compatibility.
+The [IDSA Rulebook chapter on attributes and claims](https://github.com/International-Data-Spaces-Association/IDSA-Rulebook/blob/main/documentation/104_Attributes_and_claims.md) is the deeper reference for credentials and trust anchors. The [IDSA Rulebook trust chapter](https://github.com/International-Data-Spaces-Association/IDSA-Rulebook/blob/main/documentation/008_Trust.md) explains why accepted credential evidence still does not replace contextual trust decisions.
 
-Example:
+## Handoff to issuers and operators
 
-| Credential | Accepted versions | Migration rule |
-|---|---|---|
-| `WindDataMembershipCredential` | v1, v2 | v1 accepted until the end of the pilot; v2 required for production profile. |
-| `AccreditedLabCredential` | v1 | v2 draft adds `accreditationScope`; policies must not require it until v2 is issued. |
-| `ProgramAccessCredential` | v1 | Issued per program; revoked at program end. |
+For the membership credential, the trust team should hand over the business question, issuer, trust anchor, accepted purpose, eligible holders, required values, validity rule, revocation rule, and member-only policies that depend on it.
 
-Never change the meaning of a claim silently. If `role=lab` used to mean general lab status and later means accredited lab status, create a new claim or credential version.
-
-## Design checklist
-
-For each credential type, document:
-
-1. What business question does this credential answer?
-2. Who is allowed to issue it?
-3. Who can hold it?
-4. Which claims does it contain?
-5. Which claims are mandatory?
-6. Which policies rely on it?
-7. How long is it valid?
-8. How can it be suspended or revoked?
-9. How is renewal requested?
-10. Which previous versions remain accepted?
-
-If you cannot name a policy or onboarding decision that needs a claim, do not include the claim yet.
+If you cannot name the onboarding decision or policy that needs a credential value, leave that value out for now. Minimal credentials are easier to govern, easier to explain, and safer to reuse.

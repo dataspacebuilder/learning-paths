@@ -1,174 +1,50 @@
 ---
-title: "Chapter 5: Legal vs. Technical Onboarding"
-description: "How approval, evidence, provisioning, DID setup, and credential issuance fit together."
+title: "Chapter 5: Onboard Members and Issue the First Credential"
+description: "How a dataspace verifies membership rules and issues the first credential."
 ---
 
-Onboarding turns an outside organization into an active dataspace participant.
+Onboarding is the process by which an organization joins the dataspace and receives the first credential it needs to participate.
 
-It has two different phases:
+This chapter follows the dataspace side of onboarding: the applicant reviews the rules, provides evidence, receives a membership decision, and gets a membership credential. The governance question is:
 
-1. **Legal or business onboarding** decides whether the organization is allowed to join.
-2. **Technical onboarding** creates the participant context, identity material, credentials, endpoints, and platform access.
+> Has this organization satisfied the membership rules, and should it receive a membership credential?
 
-Keep these phases separate even if one portal automates both.
+The [IDSA Rulebook onboarding pattern](https://github.com/International-Data-Spaces-Association/IDSA-Rulebook/blob/main/documentation/140_Decentralized_Patterns_Onboarding.md) describes onboarding as the step where a future participant understands the rules of the dataspace, provides evidence that it satisfies those rules, and receives the credentials it can later present to other participants.
 
-## The two phases
+## Joining the Dataspace
 
-| Phase | Main question | Output |
-|---|---|---|
-| Legal onboarding | Does this organization meet the dataspace participation rules? | Approved applicant, organization record, accepted agreements, evidence trail. |
-| Technical onboarding | Can this approved applicant act as a participant in the runtime environment? | Participant context, DID, credentials, API access, DSP endpoint, handoff package. |
+Joining a dataspace should be a voluntary decision by the participant. The applicant decides to join WindData Alliance, reviews the participation rules, and submits the evidence required by the `winddata-alliance:v1` profile.
 
-WindData Alliance may approve TowerWorks after checking its company registration, supply-chain role, signed participation agreement, and product-program relationship. The platform then provisions TowerWorks as a participant and requests the initial membership credential.
+For the first WindData profile, the evidence should stay focused on membership. TowerWorks may need to provide organization information, accept the participation terms, and show that it belongs in the offshore wind evidence exchange. The onboarding process does not need to solve every future role or program approval.
 
-The platform should not provision a production participant just because a form was submitted. The approval state must be clear.
+The output of this review is a membership decision. If the applicant satisfies the rules, the dataspace can issue or request the first membership credential.
 
-## Legal onboarding
+## The Onboarding Entity
 
-Legal onboarding is the governance workflow.
+Many dataspaces use an onboarding entity to manage this process. That entity may be run by the dataspace authority, a delegated onboarding provider, or another organization acting under the authority's rules.
 
-It may include:
+The onboarding entity checks the applicant against the membership rules. It may collect evidence, route a review, record approval, and notify the issuer that a membership credential should be created.
 
-- applicant registration;
-- organization identity checks;
-- commercial register or legal entity evidence;
-- accepted terms and participation agreements;
-- proof of certifications or accreditations;
-- data protection or security questionnaires;
-- human review;
-- approval, rejection, or request for more evidence.
+This entity should not become a permanent gatekeeper for every dataspace interaction. In a decentralized dataspace, participants should not need an ongoing central service just to evaluate every future contract. The onboarding service is mainly the joining point.
 
-For WindData Alliance, SafeLoad Labs may need extra evidence before it can receive an `AccreditedLabCredential`. GridSight may need an analytics-provider approval before it can access summary data. NorthSea Wind may need product-program approval for the `NSW-15` evidence pack.
+## Issuing the Membership Credential
 
-The [IDSA Rulebook onboarding pattern](https://github.com/International-Data-Spaces-Association/IDSA-Rulebook/blob/main/documentation/140_Decentralized_Patterns_Onboarding.md) describes broader onboarding patterns. This chapter focuses on what the trust-design team must hand to operators.
+Once membership is approved, a credential issuer creates the membership credential. For the first WindData profile, that credential is `WindDataMembershipCredential`.
 
-## Technical onboarding
+The issuer does not decide who may join on its own. It issues the credential based on the approved onboarding record. The governance team should therefore define the evidence source behind issuance: which approval record, which profile, which participant, which validity period, and which status rules apply.
 
-Technical onboarding starts after approval.
-
-A typical managed-platform flow is:
-
-1. create a tenant record for the organization;
-2. create a participant profile linked to the correct dataspace profile;
-3. create or register the participant DID;
-4. create participant-scoped API clients;
-5. create Control Plane and Identity Hub contexts;
-6. register the holder with the issuer, if needed;
-7. request initial credentials;
-8. deliver credentials to the participant's Identity Hub;
-9. validate DSP, Management API, and Identity Hub endpoints;
-10. hand over endpoints, identifiers, and credentials to the participant or application team.
-
-This is the platform workflow described in [Provision Participants](../platform-setup/10-provisioning-participants/). The trust team defines the rules that workflow follows.
-
-## The handoff between phases
-
-The most important design boundary is the handoff from legal approval to technical provisioning.
-
-A clean handoff package from the onboarding workflow to the platform operator should include:
-
-| Input | Why the platform needs it |
-|---|---|
-| Approved organization identifier | Creates or links the tenant record. |
-| Approved participant name | Used for display, support, and handoff. |
-| Dataspace profile | Determines protocol, credential, and policy expectations. |
-| Identifier strategy | Determines DID method, hostname, or pre-existing DID registration. |
-| Credential requests | Tells issuer integration which credentials to issue. |
-| Evidence references | Links technical issuance back to reviewed legal evidence without copying documents into runtime components. |
-| Approval timestamp and reviewer | Supports audit and support. |
-| Restrictions or conditions | Example: sandbox-only, pilot-only, product-program-specific. |
-
-Avoid sending raw onboarding documents into every platform component. Keep legal evidence in the onboarding or governance system. Send the minimum references needed for technical traceability.
-
-## Onboarding states
-
-Use explicit states. They help applicants, operators, issuers, and support teams understand where a participant is blocked.
-
-| State | Meaning | Typical owner |
-|---|---|---|
-| `draft` | Applicant started but has not submitted. | Applicant. |
-| `submitted` | Application is waiting for validation. | Registration service. |
-| `needs-evidence` | Required evidence is missing or insufficient. | Applicant and reviewer. |
-| `approved` | Legal or business criteria are satisfied. | Dataspace authority or delegate. |
-| `provisioning` | Technical participant setup is running. | Platform operator and CFM. |
-| `credential-pending` | Infrastructure exists, but required credential issuance is incomplete. | Issuer and platform integration. |
-| `active` | Participant can use the dataspace profile. | Participant and platform operator. |
-| `suspended` | Participant is intentionally blocked from new use. | Dataspace authority, issuer, operator. |
-| `offboarded` | Participation ended and records are archived according to policy. | Dataspace authority and operator. |
-
-Your exact state names can differ. The distinction matters more than the labels.
+In a simple pilot, the onboarding entity and the membership issuer may be operated by the same organization. That is acceptable if the responsibility is clear: onboarding checks the membership rules; issuance creates verifiable proof of the approved decision.
 
 ## Onboarding models
 
-There is more than one valid model.
+There is more than one valid onboarding model. A small pilot may use one onboarding workflow operated by the dataspace authority. A larger ecosystem may delegate review to approved onboarding providers. In some decentralized models, a participant may prove eligibility directly to another participant according to the dataspace rules.
 
-| Model | Description | When useful |
-|---|---|---|
-| Centralized onboarding | One registration workflow handles applications for the dataspace. | Small pilots, strong consistency requirements, regulated communities. |
-| Delegated onboarding | Multiple approved providers perform onboarding under the same rules. | Larger ecosystems, regional service providers, SME onboarding. |
-| Decentralized credential-based onboarding | Participants prove eligibility with accepted credentials from external trust frameworks. | Communities that want minimal central dependency and already have trusted credentials. |
-| Hybrid onboarding | A lightweight dataspace membership check plus external credentials for domain roles. | Most growing industrial dataspaces. |
+The choice is a governance decision. The important point is that the membership rule, evidence requirement, issuer responsibility, and credential result are clear.
 
-The choice is a governance decision. The platform can support different models, but it cannot decide which model is acceptable.
+## Do not automate judgment too early
 
-## Credential issuance during onboarding
+Automation is useful once criteria are stable. Before that, it can make weak governance look precise.
 
-The initial technical onboarding usually requests one or more credentials:
+For a pilot, it is often better to keep membership approval manual while automating only the issuance step that follows approval. As confidence grows, evidence collection, validation, and credential issuance can become more automated.
 
-- membership credential;
-- role credential;
-- profile-specific credential;
-- technical conformance credential, if used;
-- product-program access credential, if approved during onboarding.
-
-Not every credential must be issued at join time. For example, TowerWorks may join with membership and fabricator role credentials, then later request `ProgramAccessCredential(NSW-15)` when it starts that program.
-
-Design both flows:
-
-| Credential timing | Example |
-|---|---|
-| Issued during initial onboarding | WindData membership credential. |
-| Issued after additional review | Accredited lab credential. |
-| Issued by external issuer | Security certification credential. |
-| Issued per project or relationship | Program access credential. |
-| Reused from another trust framework | Existing legal entity or industry certification credential. |
-
-## What to document for operators
-
-Before technical provisioning is automated, the trust team should provide:
-
-1. onboarding states and transitions;
-2. evidence requirements per credential;
-3. approval authority per state;
-4. mapping from approval output to CFM tenant and participant profile input;
-5. issuer integration requirements;
-6. credential delivery expectations;
-7. failure handling for rejected issuance;
-8. suspension and offboarding triggers;
-9. audit retention expectations;
-10. participant-facing messages for common failures.
-
-If an applicant is rejected by the issuer, the operator should not have to guess whether the problem is technical or governance-related.
-
-## What not to automate too early
-
-Avoid automating approval decisions before the criteria are stable.
-
-For a pilot, it is acceptable to automate technical provisioning while keeping legal approval manual. That is often safer than encoding immature governance rules in software.
-
-A good first milestone is:
-
-```text
-manual legal approval
-        │
-        ▼
-approved onboarding record
-        │
-        ▼
-automated CFM provisioning and credential request
-        │
-        ▼
-operator validation and participant handoff
-```
-
-As confidence grows, parts of evidence collection, validation, and issuance can become more automated.
+By now, you should have defined how an organization joins the dataspace, which evidence is required for membership, who approves membership, who issues the membership credential, and which states explain where an applicant is in the process.
